@@ -18,7 +18,7 @@
   <link rel="stylesheet" href="Css/estilo.css" />
 
   <!-- Favicon -->
-  <link rel="shortcut icon" href="Imagens/Icon.jpg" type="image/x-icon">
+  <link rel="shortcut icon" href="img/Icon.jpg" type="image/x-icon">
 </head>
 <body>
 
@@ -41,7 +41,7 @@
         </button>
 
         <a class="d-flex align-items-center gap-2 text-decoration-none" href="index.html" aria-label="BarraBytech">
-          <img src="Imagens/Icon.png" alt="BarraBytech" class="logo">
+          <img src="img/Icon.png" alt="BarraBytech" class="logo">
           <span class="brand-text">BarraBytech</span>
         </a>
       </div>
@@ -49,13 +49,14 @@
       <!-- search -->
       <div class="search-box mx-3 mt-2  mb-2" style="flex:1;max-width:700px;">
         <input class="form-control" type="search" placeholder="Buscar peças, placas, processadores..." aria-label="Buscar">
+        <i class="bi bi-search icon"></i>
       </div>
 
       <!-- right icons -->
       <div class="d-flex align-items-center gap-3">
         <a href="entrar.html" class="icon-link"><i class="bi bi-people mb-2"></i><span class="d-none d-md-inline">Entrar</span></a>
-        <a href="#" class="icon-link"><i class="bi bi-heart mb-2"></i><span class="d-none d-md-inline">Favoritos</span></a>
-        <a href="#" class="icon-link"><i class="bi bi-cart mb-2"></i><span class="d-none d-md-inline">Carrinho</span></a>
+        <a href="favoritos.html" class="icon-link"><i class="bi bi-heart mb-2"></i><span class="d-none d-md-inline">Favoritos</span></a>
+        <a href="carrinho.html" class="icon-link"><i class="bi bi-cart mb-2"></i><span class="d-none d-md-inline">Carrinho</span></a>
       </div>
 
       <!-- Offcanvas -->
@@ -66,11 +67,20 @@
         </div>
         <div class="offcanvas-body">
           <ul class="navbar-nav flex-grow-1">
-            <li class="nav-item"><a class="nav-link" href="#">Hardware <i class="bi bi-motherboard"></i></a></li>
+            <li class="nav-item"><a class="nav-link" href="hardware.html">Hardware <i class="bi bi-motherboard"></i></a></li>
             <li class="nav-item"><a class="nav-link" href="#">Periféricos <i class="bi bi-keyboard"></i></a></li>
-            <li class="nav-item"><a class="nav-link" href="#">Monte seu PC</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">Ofertas <i class="bi bi-tags"></i></a></li>
-            <li class="nav-item"><a class="nav-link" href="#">PC Gamer <i class="bi bi-pc"></i></a></li>
+            <li class="nav-item"><a class="nav-link" href="montePC.html">Monte seu PC</a></li>
+            <li class="nav-item"><a class="nav-link" href="ofertas.html">Ofertas <i class="bi bi-tags"></i></a></li>
+            <li class="nav-item"><a class="nav-link" href="pc-gamer.html">PC Gamer <i class="bi bi-pc"></i></a></li>
+            <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Mais categorias
+            </a>
+            <ul class="dropdown-menu">
+              <li class="nav-item"><a class="nav-link" href="sobre.html"><i class="bi bi-people me-2"></i>Quem somos?</a></li>
+              <li class="nav-item"><a class="nav-link" href="atendimento.html"><i class="bi bi-headset me-2"></i>Atendimento</a></li>
+            </ul>
+          </li>
           </ul>
 
           <!-- Busca no offcanvas -->
@@ -86,12 +96,12 @@
   <!-- Navegação secundária -->
   <div class="nav-links">
     <div class="container d-flex justify-content-center gap-4 flex-wrap">
-      <a href="#">Departamentos</a>
-      <a href="#">Monte seu PC</a>
-      <a href="#">Ofertas</a>
-      <a href="#">Hardware</a>
-      <a href="#">PC Gamer</a>
-      <a href="#">Periféricos</a>
+      <a href="departamentos.html">Departamentos</a>
+      <a href="montePC.html">Monte seu PC</a>
+      <a href="ofertas.html">Ofertas</a>
+      <a href="hardware.html">Hardware</a>
+      <a href="pc-gamer.html">PC Gamer</a>
+      <a href="perifericos.html">Periféricos</a>
     </div>
   </div>
 
@@ -115,11 +125,11 @@
         <div class="card product-card h-100 shadow-sm border-0">
           
           <!-- Botão de Favoritar -->
-<button class="btn btn-outline-secondary btn-fav">
+<button class="btn btn-outline-secondary btn-fav" data-id="1">
   <i class="bi bi-heart"></i>
 </button>
 
-<img src="Imagens/rtx-4060.jpg" class="card-img-top" alt="Placa de Vídeo RTX-4060">
+<img src="img/rtx-4060.jpg" class="card-img-top" alt="Placa de Vídeo RTX-4060">
 
           <div class="card-body d-flex flex-column">
             <h5 class="card-title">Placa de Vídeo RTX 4060</h5>
@@ -148,10 +158,10 @@
 <div class="col-12 col-sm-6 col-md-4 col-lg-3">
   <div class="card product-card h-100 shadow-sm border-0">
      <!-- Botão de Favoritar -->
-<button class="btn btn-outline-secondary btn-fav">
+<button class="btn btn-outline-secondary btn-fav" data-id="2">
   <i class="bi bi-heart"></i>
 </button>
-    <img src="Imagens/Intel-Core-i9.png" class="card-img-top" alt="Processador Intel Core i9">
+    <img src="img/Intel-Core-i9.png" class="card-img-top" alt="Processador Intel Core i9">
     <div class="card-body d-flex flex-column">
       <h5 class="card-title">Processador Intel i9 13900K</h5>
       <p class="card-desc text-muted">Desempenho extremo para jogos e multitarefas avançadas.</p>
@@ -170,10 +180,10 @@
 <div class="col-12 col-sm-6 col-md-4 col-lg-3">
   <div class="card product-card h-100 shadow-sm border-0">
      <!-- Botão de Favoritar -->
-<button class="btn btn-outline-secondary btn-fav">
+<button class="btn btn-outline-secondary btn-fav" data-id="3">
   <i class="bi bi-heart"></i>
 </button>
-    <img src="Imagens/memoria-ram.jpg" class="card-img-top" alt="Memória RAM 32GB">
+    <img src="img/memoria-ram.jpg" class="card-img-top" alt="Memória RAM 32GB">
     <div class="card-body d-flex flex-column">
       <h5 class="card-title">Memória RAM 32GB DDR5</h5>
       <p class="card-desc text-muted">Alta velocidade para gamers e profissionais exigentes.</p>
@@ -192,10 +202,10 @@
 <div class="col-12 col-sm-6 col-md-4 col-lg-3">
   <div class="card product-card h-100 shadow-sm border-0">
      <!-- Botão de Favoritar -->
-<button class="btn btn-outline-secondary btn-fav">
+<button class="btn btn-outline-secondary btn-fav" data-id="4">
   <i class="bi bi-heart"></i>
 </button>
-    <img src="Imagens/SSD.jpg" class="card-img-top" alt="SSD NVMe 1TB">
+    <img src="img/SSD.jpg" class="card-img-top" alt="SSD NVMe 1TB">
     <div class="card-body d-flex flex-column">
       <h5 class="card-title">SSD NVMe 1TB</h5>
       <p class="card-desc text-muted">Velocidade máxima de leitura e escrita para seu PC.</p>
@@ -214,10 +224,10 @@
 <div class="col-12 col-sm-6 col-md-4 col-lg-3">
   <div class="card product-card h-100 shadow-sm border-0">
      <!-- Botão de Favoritar -->
-<button class="btn btn-outline-secondary btn-fav">
+<button class="btn btn-outline-secondary btn-fav" data-id="5">
   <i class="bi bi-heart"></i>
 </button>
-    <img src="Imagens/fonte-aerocool.jpg" class="card-img-top" alt="Fonte Aerocool">
+    <img src="img/fonte-aerocool.jpg" class="card-img-top" alt="Fonte Aerocool">
     <div class="card-body d-flex flex-column">
       <h5 class="card-title">Fonte gamer ATX Aerocool KCAS 1000W</h5>
       <p class="card-desc text-muted">Energia confiável e potente para setups de alto desempenho.</p>
@@ -236,15 +246,15 @@
 <div class="col-12 col-sm-6 col-md-4 col-lg-3">
   <div class="card product-card h-100 shadow-sm border-0">
      <!-- Botão de Favoritar -->
-<button class="btn btn-outline-secondary btn-fav">
+<button class="btn btn-outline-secondary btn-fav" data-id="6">
   <i class="bi bi-heart"></i>
 </button>
-    <img src="Imagens/water-cooler.png" class="card-img-top" alt="Water Cooler">
+    <img src="img/water-cooler.png" class="card-img-top" alt="Water Cooler">
     <div class="card-body d-flex flex-column">
       <h5 class="card-title">Water Cooler Neologic Liquid</h5>
       <p class="card-desc text-muted">Resfriamento eficiente para manter a performance estável.</p>
       <p class="card-text text-muted "><del>R$ 429,99</del></p>
-      <p class="card-text fw-bold text-danger mb-3">R$ 322,00</p>
+      <p class="card-text fw-bold text-danger mt-2">R$ 322,00</p>
       <div class="d-flex gap-2 mt-auto">
         <a href="#" class="btn btn-outline-dark flex-grow-1"><i class="bi bi-eye"></i> Ver mais</a>
         <a href="#" class="btn btn-outline-primary flex-grow-1"><i class="bi bi-cart-plus"></i> Carrinho</a>
@@ -258,10 +268,10 @@
 <div class="col-12 col-sm-6 col-md-4 col-lg-3">
   <div class="card product-card h-100 shadow-sm border-0">
      <!-- Botão de Favoritar -->
-<button class="btn btn-outline-secondary btn-fav">
+<button class="btn btn-outline-secondary btn-fav" data-id="7">
   <i class="bi bi-heart"></i>
 </button>
-    <img src="Imagens/pasta-termica.jpg" class="card-img-top" alt="Pasta Térmica">
+    <img src="img/pasta-termica.jpg" class="card-img-top" alt="Pasta Térmica">
     <div class="card-body d-flex flex-column">
       <h5 class="card-title">Pasta térmica PCYes Nitrogen Pro 4g</h5>
       <p class="card-desc text-muted">Máxima dissipação térmica para processadores e placas de vídeo.</p>
@@ -280,10 +290,10 @@
 <div class="col-12 col-sm-6 col-md-4 col-lg-3">
   <div class="card product-card h-100 shadow-sm border-0">
      <!-- Botão de Favoritar -->
-<button class="btn btn-outline-secondary btn-fav">
+<button class="btn btn-outline-secondary btn-fav" data-id="8">
   <i class="bi bi-heart"></i>
 </button>
-    <img src="Imagens/memoria-ram-16gb.jpg" class="card-img-top" alt="Memória RAM 16GB">
+    <img src="img/memoria-ram-16gb.jpg" class="card-img-top" alt="Memória RAM 16GB">
     <div class="card-body d-flex flex-column">
       <h5 class="card-title">Memória RAM 16GB DDR5 6000MHz</h5>
       <p class="card-desc text-muted">Performance de ponta para jogos e produtividade.</p>
@@ -320,24 +330,9 @@
     </div>
   </footer>
 
-  <!-- Scripts -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
-  <script>
-    document.querySelectorAll(".btn-fav").forEach(button => {
-      button.addEventListener("click", function () {
-        const icon = this.querySelector("i");
-  
-        // Se já tiver "bi-heart-fill", volta para normal
-        if (icon.classList.contains("bi-heart-fill")) {
-          icon.classList.remove("bi-heart-fill", "text-danger");
-          icon.classList.add("bi-heart");
-        } else {
-          icon.classList.remove("bi-heart");
-          icon.classList.add("bi-heart-fill", "text-danger");
-        }
-      });
-    });
-  </script>
+
+  <script src="JS/scripts.js"></script>
 </body>
 </html>
