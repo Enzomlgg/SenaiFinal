@@ -14,10 +14,9 @@
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Montserrat:wght@600;700&family=Orbitron:wght@500;700&display=swap" rel="stylesheet" />
 
-  <!-- CSS Customizado -->
+  <!-- CSS -->
   <link rel="stylesheet" href="Css/estilo.css" />
 
-  <!-- Favicon -->
   <link rel="shortcut icon" href="img/Icon.jpg" type="image/x-icon">
 </head>
 <body>
@@ -30,11 +29,9 @@
     <button type="button" class="btn-close btn-close-white" aria-label="Close"></button>
   </div>
 
-  <!-- Navbar -->
   <nav id="topo" class="navbar shadow-sm">
     <div class="container d-flex align-items-center justify-content-between">
       <div class="d-flex align-items-center gap-3">
-        <!-- offcanvas trigger -->
         <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -45,20 +42,17 @@
         </a>
       </div>
 
-      <!-- search -->
       <div class="search-box mx-3 mt-2  mb-2" style="flex:1;max-width:700px;">
         <input class="form-control" type="search" placeholder="Buscar peças, placas, processadores..." aria-label="Buscar">
         <i class="bi bi-search icon"></i>
       </div>
 
-      <!-- right icons -->
       <div class="d-flex align-items-center gap-3">
         <a href="index.html" class="icon-link"><i class="bi bi-house mb-2"></i><span class="d-none d-md-inline">Início</span></a>
         <a href="favoritos.html" class="icon-link"><i class="bi bi-heart mb-2"></i><span class="d-none d-md-inline">Favoritos</span></a>
-        <a href="#" class="icon-link"><i class="bi bi-cart mb-2"></i><span class="d-none d-md-inline">Carrinho</span></a>
+        <a href="carrinho.html" class="icon-link"><i class="bi bi-cart mb-2"></i><span class="d-none d-md-inline">Carrinho</span></a>
       </div>
 
-      <!-- Offcanvas -->
       <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar">
         <div class="offcanvas-header">
           <h5 class="offcanvas-title">Categorias</h5>
@@ -67,8 +61,8 @@
         <div class="offcanvas-body">
           <ul class="navbar-nav flex-grow-1">
             <li class="nav-item"><a class="nav-link" href="hardware.html">Hardware <i class="bi bi-motherboard"></i></a></li>
-            <li class="nav-item"><a class="nav-link" href="#">Periféricos <i class="bi bi-keyboard"></i></a></li>
-            <li class="nav-item"><a class="nav-link" href="montePC.html">Monte seu PC</a></li>
+            <li class="nav-item"><a class="nav-link" href="perifericos.html">Periféricos <i class="bi bi-keyboard"></i></a></li>
+            <li class="nav-item"><a class="nav-link" href="montePC.html">Monte seu PC<i class="bi bi-tools"></i></a></li>
             <li class="nav-item"><a class="nav-link" href="ofertas.html">Ofertas <i class="bi bi-tags"></i></a></li>
             <li class="nav-item"><a class="nav-link" href="pc-gamer.html">PC Gamer <i class="bi bi-pc"></i></a></li>
             <li class="nav-item dropdown">
@@ -82,7 +76,6 @@
           </li>
           </ul>
 
-          <!-- Busca no offcanvas -->
           <form class="d-flex mt-3" role="search">
             <input class="form-control me-2" type="search" placeholder="Buscar..." aria-label="Search" />
             <button class="btn btn-warning" type="submit">Buscar</button>
@@ -99,11 +92,10 @@
       <a href="ofertas.html">Ofertas</a>
       <a href="hardware.html">Hardware</a>
       <a href="pc-gamer.html">PC Gamer</a>
-      <a href="#">Periféricos</a>
+      <a href="perifericos.html">Periféricos</a>
     </div>
   </div>
 
-  <!-- Cabeçalho -->
   <header class="py-5 text-center bg-light">
     <div class="container">
       <h1 class="fw-bold">Atendimento</h1>
@@ -111,12 +103,10 @@
     </div>
   </header>
 
-  <!-- Seção Canais de Contato -->
   <section class="py-5">
     <div class="container">
       <div class="row g-4 justify-content-center">
         
-        <!-- WhatsApp -->
         <div class="col-md-4">
           <div class="card shadow-sm text-center p-4 h-100">
             <i class="bi bi-whatsapp text-success display-4 mb-3"></i>
@@ -126,7 +116,6 @@
           </div>
         </div>
 
-        <!-- Telefone -->
         <div class="col-md-4">
           <div class="card shadow-sm text-center p-4 h-100">
             <i class="bi bi-telephone text-primary display-4 mb-3"></i>
@@ -136,7 +125,6 @@
           </div>
         </div>
 
-        <!-- E-mail -->
         <div class="col-md-4">
           <div class="card shadow-sm text-center p-4 h-100">
             <i class="bi bi-envelope text-warning display-4 mb-3"></i>
@@ -150,7 +138,6 @@
     </div>
   </section>
 
-  <!-- Formulário de Contato -->
   <section class="py-5 bg-light">
     <div class="container">
       <div class="text-center mb-4">
@@ -180,7 +167,6 @@
     </div>
   </section>
 
-  <!-- Rodapé -->
   <footer class="footer text-center py-4 mt-4">
     <div class="container">
       <p class="mb-2 text-light fw-semibold">

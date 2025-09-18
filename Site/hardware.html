@@ -14,7 +14,7 @@
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Montserrat:wght@600;700&family=Orbitron:wght@500;700&display=swap" rel="stylesheet" />
 
-  <!-- CSS Customizado -->
+  <!-- CSS -->
   <link rel="stylesheet" href="Css/estilo.css" />
 
   <!-- Favicon -->
@@ -26,7 +26,6 @@
 </head>
 <body>
 
-  <!-- Top Bar -->
   <div class="top-bar d-flex justify-content-center align-items-center gap-2 py-2">
     <span>🔥 Ofertas exclusivas toda semana! Cadastre-se já.</span>
     <a href="entrar.html">
@@ -35,11 +34,9 @@
     <button type="button" class="btn-close btn-close-white" aria-label="Close"></button>
   </div>
 
-  <!-- Navbar -->
   <nav id="topo" class="navbar shadow-sm">
     <div class="container d-flex align-items-center justify-content-between">
       <div class="d-flex align-items-center gap-3">
-        <!-- offcanvas trigger -->
         <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -50,20 +47,17 @@
         </a>
       </div>
 
-      <!-- search -->
       <div class="search-box mx-3 mt-2  mb-2" style="flex:1;max-width:700px;">
         <input class="form-control" type="search" placeholder="Buscar peças, placas, processadores..." aria-label="Buscar">
         <i class="bi bi-search icon"></i>
       </div>
 
-      <!-- right icons -->
       <div class="d-flex align-items-center gap-3">
         <a href="entrar.html" class="icon-link"><i class="bi bi-people mb-2"></i><span class="d-none d-md-inline">Entrar</span></a>
         <a href="index.html" class="icon-link"><i class="bi bi-house mb-2"></i><span class="d-none d-md-inline">Ínicio</span></a>
-        <a href="#" class="icon-link"><i class="bi bi-cart mb-2"></i><span class="d-none d-md-inline">Carrinho</span></a>
+        <a href="carrinho.html" class="icon-link"><i class="bi bi-cart mb-2"></i><span class="d-none d-md-inline">Carrinho</span></a>
       </div>
 
-      <!-- Offcanvas -->
       <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar">
         <div class="offcanvas-header">
           <h5 class="offcanvas-title">Categorias</h5>
@@ -72,8 +66,8 @@
         <div class="offcanvas-body">
           <ul class="navbar-nav flex-grow-1">
             <li class="nav-item"><a class="nav-link" href="hardware.html">Hardware <i class="bi bi-motherboard"></i></a></li>
-            <li class="nav-item"><a class="nav-link" href="#">Periféricos <i class="bi bi-keyboard"></i></a></li>
-            <li class="nav-item"><a class="nav-link" href="montePC.html">Monte seu PC</a></li>
+            <li class="nav-item"><a class="nav-link" href="perifericos.html">Periféricos <i class="bi bi-keyboard"></i></a></li>
+            <li class="nav-item"><a class="nav-link" href="montePC.html">Monte seu PC<i class="bi bi-tools"></i></a></li>
             <li class="nav-item"><a class="nav-link" href="ofertas.html">Ofertas <i class="bi bi-tags"></i></a></li>
             <li class="nav-item"><a class="nav-link" href="pc-gamer.html">PC Gamer <i class="bi bi-pc"></i></a></li>
             <li class="nav-item dropdown">
@@ -87,7 +81,6 @@
           </li>
           </ul>
 
-          <!-- Busca no offcanvas -->
           <form class="d-flex mt-3" role="search">
             <input class="form-control me-2" type="search" placeholder="Buscar..." aria-label="Search" />
             <button class="btn btn-warning" type="submit">Buscar</button>
@@ -97,7 +90,6 @@
     </div>
   </nav>
 
-  <!-- Navegação secundária -->
   <div class="nav-links">
     <div class="container d-flex justify-content-center gap-4 flex-wrap">
       <a href="departamentos.html">Departamentos</a>
@@ -105,12 +97,11 @@
       <a href="ofertas.html">Ofertas</a>
       <a href="hardware.html">Hardware</a>
       <a href="pc-gamer.html">PC Gamer</a>
-      <a href="#">Periféricos</a>
+      <a href="perifericos.html">Periféricos</a>
     </div>
   </div>
 </div>
 
-<!-- Barra de filtros -->
 <section class="container py-3">
   <div class="row g-2 align-items-center">
     <div class="col-12 col-md-4">
@@ -309,7 +300,6 @@
 </section>
 
 
-  <!-- Rodapé -->
   <footer class="footer text-center py-4 mt-4">
     <div class="container">
       <p class="mb-2 text-light fw-semibold">

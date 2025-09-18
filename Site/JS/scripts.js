@@ -1,243 +1,216 @@
-// carrinho.js
-const container = document.getElementById("carrinho-itens");
-const contador = document.getElementById("contador-carrinho");
-let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
+// scripts.js
 
-// Atualiza visualização do carrinho
-function atualizarCarrinho() {
-  container.innerHTML = "";
-  let total = 0;
+document.addEventListener("DOMContentLoaded", () => {
+  const btnFavs = document.querySelectorAll(".btn-fav");
 
-  if (carrinho.length === 0) {
-    container.innerHTML = "<p class='text-muted'>Ainda não há produtos no carrinho.</p>";
-  } else {
-    carrinho.forEach((produto, index) => {
-      const precoNum = parseFloat(produto.preco.replace("R$","").replace(".","").replace(",","."));
-      total += precoNum;
+  // Função para pegar favoritos do localStorage (retorna array)
+  function getFavoritos() {
+    return JSON.parse(localStorage.getItem("favoritos")) || [];
+  }
 
-      container.innerHTML += `
-        <div class="col-12 col-md-6 col-lg-4">
-          <div class="card h-100 shadow-sm">
-            <img src="${produto.img}" class="card-img-top" alt="${produto.nome}">
-            <div class="card-body d-flex flex-column">
-              <h5 class="card-title">${produto.nome}</h5>
-              <p class="card-text fw-bold text-danger mb-3">${produto.preco}</p>
-              <button class="btn btn-danger mt-auto" onclick="removerItem(${index})">Remover</button>
-            </div>
-          </div>
-        </div>
-      `;
+  // Função para salvar favoritos no localStorage
+  function saveFavoritos(favoritos) {
+    localStorage.setItem("favoritos", JSON.stringify(favoritos));
+  }
+
+  // Atualiza o estado visual dos botões no carregamento da página
+  function atualizarVisualFavoritos() {
+    const favoritos = getFavoritos();
+    btnFavs.forEach(btn => {
+      const id = btn.dataset.id;
+      if (favoritos.includes(id)) {
+        btn.classList.add("favorito-ativo");
+        btn.querySelector("i").classList.remove("bi-heart");
+        btn.querySelector("i").classList.add("bi-heart-fill", "text-danger");
+      } else {
+        btn.classList.remove("favorito-ativo");
+        btn.querySelector("i").classList.remove("bi-heart-fill", "text-danger");
+        btn.querySelector("i").classList.add("bi-heart");
+      }
     });
   }
 
-  document.getElementById("carrinho-total").innerText = `Total: R$ ${total.toFixed(2).replace(".",",")}`;
-  contador.innerText = carrinho.length;
-}
+  btnFavs.forEach(btn => {
+    btn.addEventListener("click", () => {
+      const id = btn.dataset.id;
+      let favoritos = getFavoritos();
 
-// Remove item do carrinho
-function removerItem(index) {
-  carrinho.splice(index, 1);
-  localStorage.setItem("carrinho", JSON.stringify(carrinho));
-  atualizarCarrinho();
-}
+      if (favoritos.includes(id)) {
+        // Remove dos favoritos
+        favoritos = favoritos.filter(favId => favId !== id);
+      } else {
+        // Adiciona aos favoritos
+        favoritos.push(id);
+      }
 
-// Finalizar compra
-document.getElementById("finalizar-compra").addEventListener("click", () => {
-  if(carrinho.length === 0){
-    alert("Seu carrinho está vazio!");
-  } else {
-    alert("Compra finalizada com sucesso! 🛒");
-    localStorage.removeItem("carrinho");
-    carrinho = [];
-    atualizarCarrinho();
-  }
-});
-
-// Função para adicionar produto ao carrinho (chamada pelos cards)
-function adicionarAoCarrinho(produto) {
-  carrinho.push(produto);
-  localStorage.setItem("carrinho", JSON.stringify(carrinho));
-  atualizarCarrinho();
-}
-
-// Inicializa
-atualizarCarrinho();
-
-
-// ---------- FAVORITOS -------------- // 
-
-// Seleciona todos os botões de favorito
-const favButtons = document.querySelectorAll('.btn-fav');
-
-favButtons.forEach(button => {
-  // Atualiza o ícone se já estiver favoritado
-  const favs = JSON.parse(localStorage.getItem('favoritos')) || [];
-  if (favs.find(p => p.id === button.dataset.id)) {
-    button.classList.add('btn-danger');
-    button.querySelector('i').classList.replace('bi-heart', 'bi-heart-fill');
-  }
-
-  button.addEventListener('click', () => {
-    let favoritos = JSON.parse(localStorage.getItem('favoritos')) || [];
-    const product = {
-      id: button.dataset.id,
-      name: button.dataset.name,
-      price: button.dataset.price,
-      img: button.dataset.img
-    };
-
-    const exists = favoritos.find(p => p.id === product.id);
-
-    if (exists) {
-      // Remove dos favoritos
-      favoritos = favoritos.filter(p => p.id !== product.id);
-      button.classList.remove('btn-danger');
-      button.querySelector('i').classList.replace('bi-heart-fill', 'bi-heart');
-    } else {
-      // Adiciona aos favoritos
-      favoritos.push(product);
-      button.classList.add('btn-danger');
-      button.querySelector('i').classList.replace('bi-heart', 'bi-heart-fill');
-    }
-
-    localStorage.setItem('favoritos', JSON.stringify(favoritos));
+      saveFavoritos(favoritos);
+      atualizarVisualFavoritos();
+    });
   });
+
+  atualizarVisualFavoritos();
 });
 
-// --------------------- FAVORITOS ------------------ //
+const produtos = [
+  {
+    id: "1",
+    titulo: "Placa de Vídeo RTX 4060",
+    descricao: "Placa de vídeo poderosa para games em alta qualidade e streamings fluídos.",
+    precoAntigo: "R$ 3.499,00",
+    precoAtual: "R$ 2.999,00",
+    img: "img/rtx-4060.jpg",
+    alt: "Placa de Vídeo RTX-4060"
+  },
+  {
+    id: "2",
+    titulo: "Processador Intel i9 13900K",
+    descricao: "Desempenho extremo para jogos e multitarefas avançadas.",
+    precoAntigo: "R$ 2.199,00",
+    precoAtual: "R$ 1.899,00",
+    img: "img/Intel-Core-i9.png",
+    alt: "Processador Intel Core i9"
+  },
+  {
+    id: "3",
+    titulo: "Memória RAM 32GB DDR5",
+    descricao: "Alta velocidade para gamers e profissionais exigentes.",
+    precoAntigo: "R$ 849,00",
+    precoAtual: "R$ 749,00",
+    img: "img/memoria-ram.jpg",
+    alt: "Memória RAM 32GB"
+  },
+  
+  {
+    id: "4",
+    titulo: "SSD NVMe 1TB",
+    descricao: "Velocidade máxima de leitura e escrita para seu PC.",
+    precoAntigo: "R$ 599,00",
+    precoAtual: "R$ 499,00",
+    img: "img/SSD.jpg",
+    alt: "SSD NVMe 1TB"
+  },
+  
+  {
+    id: "5",
+    titulo: "Fonte gamer ATX Aerocool KCAS 1000W",
+    descricao: "Energia confiável e potente para setups de alto desempenho.",
+    precoAntigo: "R$ 1.299,90",
+    precoAtual: "R$ 1.069,90",
+    img: "img/fonte-aerocool.jpg",
+    alt: "Fonte Aerocool"
+  },
+  
+  {
+    id: "6",
+    titulo: "Water Cooler Neologic Liquid",
+    descricao: "Resfriamento eficiente para manter a performance estável.",
+    precoAntigo: "R$ 429,99",
+    precoAtual: "R$ 322,00",
+    img: "img/water-cooler.png",
+    alt: "Water Cooler"
+  },
+  
+  {
+    id: "7",
+    titulo: "Pasta térmica PCYes Nitrogen Pro 4g",
+    descricao: "Máxima dissipação térmica para processadores e placas de vídeo.",
+    precoAntigo: "R$ 15,90",
+    precoAtual: "R$ 14,35 à vista",
+    img: "img/pasta-termica.jpg",
+    alt: "Pasta Térmica"
+  },
+  
+  {
+    id: "8",
+    titulo: "Memória RAM 16GB DDR5 6000MHz",
+    descricao: "Performance de ponta para jogos e produtividade.",
+    precoAntigo: "R$ 749,90",
+    precoAtual: "R$ 659,91 à vista",
+    img: "img/memoria-ram-16gb.jpg",
+    alt: "Memória RAM 16GB"
+  }
+  
+];
+
+// ----------CARRINHO ------------ //
 
 document.addEventListener('DOMContentLoaded', () => {
-  const container = document.getElementById('favoritos-container');
-  const favoritos = JSON.parse(localStorage.getItem('favoritos')) || [];
+  const botoesCarrinho = document.querySelectorAll('.btn-outline-primary');
 
-  if (!container) return;
+  botoesCarrinho.forEach(botao => {
+    botao.addEventListener('click', e => {
+      e.preventDefault();
 
-  if (favoritos.length === 0) {
-    container.innerHTML = `<p class="text-center text-muted w-100">Você ainda não adicionou nenhum produto aos favoritos.</p>`;
-    return;
+      const card = botao.closest('.card');
+
+      if (!card) return;
+
+      const id = card.querySelector('.btn-fav')?.dataset.id || Date.now();
+      const nome = card.querySelector('.card-title')?.textContent.trim() || 'Produto sem nome';
+      const preco = card.querySelector('.text-danger')?.textContent.trim() || 'R$ 0,00';
+      const imagem = card.querySelector('img')?.src || '';
+
+      const produto = { id, nome, preco, imagem };
+
+      adicionarAoCarrinho(produto);
+    });
+  });
+
+  if (window.location.pathname.includes('carrinho.html')) {
+    exibirCarrinho();
   }
-
-  favoritos.forEach(prod => {
-    const card = document.createElement('div');
-    card.classList.add('col-12', 'col-sm-6', 'col-md-4', 'col-lg-3');
-    card.innerHTML = `
-      <div class="card product-card h-100 shadow-sm border-0">
-        <img src="${prod.img}" class="card-img-top" alt="${prod.nome}">
-        <div class="card-body d-flex flex-column">
-          <h5 class="card-title">${prod.nome}</h5>
-          <p class="card-desc text-muted">${prod.desc}</p>
-          <p class="card-text fw-bold text-danger mb-3">${prod.preco}</p>
-          <div class="d-flex gap-2 mt-auto">
-            <a href="#" class="btn btn-outline-primary flex-grow-1" onclick='adicionarAoCarrinho(${JSON.stringify(prod)})'>
-              <i class="bi bi-cart-plus"></i> Carrinho
-            </a>
-            <button class="btn btn-danger flex-grow-1 remove-fav" data-id="${prod.id}">
-              <i class="bi bi-trash"></i> Remover
-            </button>
-          </div>
-        </div>
-      </div>
-    `;
-    container.appendChild(card);
-  });
-
-  container.addEventListener('click', e => {
-    if (e.target.closest('.remove-fav')) {
-      const btn = e.target.closest('.remove-fav');
-      const id = btn.dataset.id;
-      const novosFavs = favoritos.filter(p => p.id != id);
-      localStorage.setItem('favoritos', JSON.stringify(novosFavs));
-      location.reload();
-    }
-  });
 });
 
 function adicionarAoCarrinho(produto) {
   let carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
-  carrinho.push(produto);
-  localStorage.setItem('carrinho', JSON.stringify(carrinho));
-  alert(`${produto.nome} adicionado ao carrinho!`);
+
+  const jaExiste = carrinho.some(p => p.id === produto.id);
+
+  if (!jaExiste) {
+    carrinho.push(produto);
+    localStorage.setItem('carrinho', JSON.stringify(carrinho));
+    alert('✅ Produto adicionado ao carrinho!');
+  } else {
+    alert('⚠️ Produto já está no carrinho!');
+  }
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-  const btnsFav = document.querySelectorAll('.btn-fav');
+function exibirCarrinho() {
+  const carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
+  const container = document.querySelector('#carrinho-container');
 
-  // Lista de produtos com os dados do card
-  const produtos = [
-    {
-      id: 1,
-      nome: "Placa de Vídeo RTX 4060",
-      desc: "Placa de vídeo poderosa para games em alta qualidade e streamings fluídos.",
-      preco: "R$ 2.999,00",
-      img: "img/rtx-4060.jpg"
-    },
-    {
-      id: 2,
-      nome: "Processador Intel i9 13900K",
-      desc: "Desempenho extremo para jogos e multitarefas avançadas.",
-      preco: "R$ 1.899,00",
-      img: "img/Intel-Core-i9.png"
-    },
-    {
-      id: 3,
-      nome: "Memória RAM 32GB DDR5",
-      desc: "Alta velocidade para gamers e profissionais exigentes.",
-      preco: "R$ 749,00",
-      img: "img/memoria-ram.jpg"
-    },
-    {
-      id: 4,
-      nome: "SSD NVMe 1TB",
-      desc: "Velocidade máxima de leitura e escrita para seu PC.",
-      preco: "R$ 499,00",
-      img: "img/SSD.jpg"
-    },
-    {
-      id: 5,
-      nome: "Fonte gamer ATX Aerocool KCAS 1000W",
-      desc: "Energia confiável e potente para setups de alto desempenho.",
-      preco: "R$ 1.069,90",
-      img: "img/fonte-aerocool.jpg"
-    },
-    {
-      id: 6,
-      nome: "Water Cooler Neologic Liquid",
-      desc: "Resfriamento eficiente para manter a performance estável.",
-      preco: "R$ 322,00",
-      img: "img/water-cooler.png"
-    },
-    {
-      id: 7,
-      nome: "Pasta térmica PCYes Nitrogen Pro 4g",
-      desc: "Máxima dissipação térmica para processadores e placas de vídeo.",
-      preco: "R$ 14,35 à vista",
-      img: "img/pasta-termica.jpg"
-    },
-    {
-      id: 8,
-      nome: "Memória RAM 16GB DDR5 6000MHz",
-      desc: "Performance de ponta para jogos e produtividade.",
-      preco: "R$ 659,91 à vista",
-      img: "img/memoria-ram-16gb.jpg"
-    },
-  ];
+  if (!container) return;
 
-  btnsFav.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const id = parseInt(btn.dataset.id);
-      const produto = produtos.find(p => p.id === id);
+  if (carrinho.length === 0) {
+    container.innerHTML = '<p class="text-center mt-4">Seu carrinho está vazio.</p>';
+    return;
+  }
 
-      let favoritos = JSON.parse(localStorage.getItem('favoritos')) || [];
+  container.innerHTML = carrinho.map(item => `
+    <div class="card mb-3 shadow-sm">
+      <div class="row g-0">
+        <div class="col-md-3">
+          <img src="${item.imagem}" class="img-fluid rounded-start" alt="${item.nome}">
+        </div>
+        <div class="col-md-9">
+          <div class="card-body">
+            <h5 class="card-title">${item.nome}</h5>
+            <p class="card-text text-danger fw-bold">${item.preco}</p>
+            <button class="btn btn-danger btn-sm" onclick="removerDoCarrinho('${item.id}')">
+              Remover
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
 
-      // Evita duplicados
-      if (!favoritos.some(p => p.id === id)) {
-        favoritos.push(produto);
-        localStorage.setItem('favoritos', JSON.stringify(favoritos));
-        alert(`${produto.nome} adicionado aos favoritos!`);
-        window.location.href = "favoritos.html"; // redireciona para favoritos
-      } else {
-        alert(`${produto.nome} já está nos favoritos!`);
-      }
-    });
-  });
-});
+function removerDoCarrinho(id) {
+  let carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
+  carrinho = carrinho.filter(item => item.id !== id);
+  localStorage.setItem('carrinho', JSON.stringify(carrinho));
+  exibirCarrinho();
+}
+
+const id = card.dataset.id;
