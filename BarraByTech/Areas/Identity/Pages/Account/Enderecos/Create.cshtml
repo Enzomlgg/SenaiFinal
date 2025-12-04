@@ -1,0 +1,78 @@
+﻿@page
+@model BarraByTech.Areas.Identity.Pages.Account.Enderecos.CreateModel
+@{
+    ViewData["Title"] = "Novo Endereço";
+}
+
+<link rel="stylesheet" href="~/css/enderecos.css" />
+
+<h2 class="mb-3">Cadastrar Endereço</h2>
+
+<form method="post" class="card p-4 shadow-sm">
+
+    <div class="mb-3">
+        <label asp-for="Endereco.Cep" class="form-label"></label>
+        <input asp-for="Endereco.Cep" class="form-control" id="cep-input" maxlength="8" />
+        <span asp-validation-for="Endereco.Cep" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Endereco.Endereco" class="form-label"></label>
+        <input asp-for="Endereco.Endereco" class="form-control" id="endereco-input" />
+        <span asp-validation-for="Endereco.Endereco" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Endereco.Cidade" class="form-label"></label>
+        <input asp-for="Endereco.Cidade" class="form-control" id="cidade-input" />
+        <span asp-validation-for="Endereco.Cidade" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Endereco.Estado" class="form-label"></label>
+        <input asp-for="Endereco.Estado" class="form-control" id="estado-input" />
+        <span asp-validation-for="Endereco.Estado" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Endereco.Complemento" class="form-label"></label>
+        <input asp-for="Endereco.Complemento" class="form-control" id="complemento-input" />
+        <span asp-validation-for="Endereco.Complemento" class="text-danger"></span>
+    </div>
+
+    <div class="d-flex gap-2">
+        <button class="btn btn-success w-100">Salvar</button>
+        <a asp-page="Index" class="btn btn-secondary w-100">Cancelar</a>
+    </div>
+
+
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+
+    <script>
+        document.getElementById("cep-input").addEventListener("blur", async function () {
+            let cep = this.value.replace(/\D/g, "");
+            if (cep.length !== 8) return;
+
+            try {
+                let response = await fetch(`https://viacep.com.br/ws/${cep}/json/`);
+                let data = await response.json();
+
+                if (data.erro) {
+                    alert("CEP não encontrado!");
+                    return;
+                }
+
+                document.getElementById("endereco-input").value = data.logradouro;
+                document.getElementById("cidade-input").value = data.localidade;
+                document.getElementById("estado-input").value = data.uf;
+                document.getElementById("complemento-input").value = data.complemento || "";
+            }
+            catch (e) {
+                console.error("Erro ao buscar CEP", e);
+            }
+        });
+    </script>
+}

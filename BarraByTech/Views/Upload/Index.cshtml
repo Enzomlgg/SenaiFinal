@@ -1,0 +1,68 @@
+﻿@using BarraByTech.Models.DTO
+@model List<CategoriaDTO>
+
+@{
+    ViewData["Title"] = "Upload de Imagem";
+}
+
+<h2>Upload de Imagem por Produto</h2>
+
+<form method="post" enctype="multipart/form-data" asp-action="EnviarImagem">
+    <label>Categoria:</label>
+    <select id="categoria" required>
+        <option value="">-- Selecione --</option>
+        @foreach (var c in Model)
+        {
+            <option value="@c.CategoriaId">@c.CategoriaNome</option>
+        }
+    </select>
+
+    <br /><br />
+
+    <label>Produto:</label>
+    <select name="produtoId" id="produto" required>
+        <option value="">-- Escolha a categoria primeiro --</option>
+    </select>
+
+    <br /><br />
+
+    <label>Imagem:</label>
+    <input type="file" name="arquivo" accept="image/*" required />
+
+    <br /><br />
+
+    <button type="submit">Enviar</button>
+</form>
+
+@if (TempData["UrlImagem"] != null)
+{
+    <h3>Imagem enviada com sucesso!</h3>
+    <img src="@TempData["UrlImagem"]" style="max-width:300px" />
+    <p>Pasta: @TempData["ProdutoId"]</p>
+}
+
+@if (TempData["Erro"] != null)
+{
+    <p style="color:red">@TempData["Erro"]</p>
+}
+
+<script>
+    document.getElementById("categoria").addEventListener("change", async function () {
+        const categoriaId = this.value;
+        const produtoSelect = document.getElementById("produto");
+        produtoSelect.innerHTML = "<option>Carregando...</option>";
+
+        if (!categoriaId) {
+            produtoSelect.innerHTML = "<option value=''>-- Escolha a categoria primeiro --</option>";
+            return;
+        }
+
+        const response = await fetch(`/Upload/GetProdutos?categoriaId=${categoriaId}`);
+        const produtos = await response.json();
+
+        produtoSelect.innerHTML = "<option value=''>-- Selecione --</option>";
+        produtos.forEach(p => {
+            produtoSelect.innerHTML += `<option value="${p.id}">${p.nome}</option>`;
+        });
+    });
+</script>

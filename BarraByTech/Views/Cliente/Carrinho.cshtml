@@ -1,0 +1,154 @@
+﻿@model List<ItemCarrinhoDTO>
+@using System.Globalization
+@using BarraByTech.Models.DTO
+@inject IWebHostEnvironment Env
+
+@{
+    CultureInfo cultura = new CultureInfo("pt-BR");
+}
+
+<div id="main-content">
+    <div class="container mt-4">
+        <div class="row">
+
+            <div class="col-lg-8">
+                <h3 class="fw-bold mb-3">Meu Carrinho</h3>
+
+                @if (Model == null || !Model.Any())
+                {
+                    <div class="alert alert-info">Seu carrinho está vazio.</div>
+                }
+                else
+                {
+                    foreach (var item in Model)
+                    {
+                        var produto = await ViewBag.AdminService.GetProdutoById(item.ProdutoId);
+
+                        string imagemUrl = "/img/placeholder.png";
+                        string pastaFisica = System.IO.Path.Combine(Env.WebRootPath, "Imagens", "Produtos", item.ProdutoId.ToString());
+                        string pastaVirtual = $"/Imagens/Produtos/{item.ProdutoId}/";
+
+                        if (System.IO.Directory.Exists(pastaFisica))
+                        {
+                            string basePng = System.IO.Path.Combine(pastaFisica, "Base.png");
+                            if (System.IO.File.Exists(basePng))
+                                imagemUrl = pastaVirtual + "Base.png";
+                            else
+                            {
+                                string[] extensoes = { "png", "jpg", "jpeg", "webp" };
+                                foreach (var ext in extensoes)
+                                {
+                                    var arquivos = System.IO.Directory.GetFiles(pastaFisica, $"*.{ext}");
+                                    if (arquivos.Length > 0)
+                                    {
+                                        imagemUrl = pastaVirtual + System.IO.Path.GetFileName(arquivos[0]);
+                                        break;
+                                    }
+                                }
+                            }
+                        }
+
+                        decimal valorUnitario = produto.Promocao > 0 ? produto.Promocao : produto.Vista;
+                        decimal subtotal = valorUnitario * item.Quantidade;
+
+                        <div class="card mb-3 shadow-sm">
+                            <div class="row g-0 align-items-center">
+
+                                <div class="col-md-3 p-2 text-center">
+                                    <img src="@imagemUrl" class="img-fluid" style="max-height:140px; object-fit:contain;" />
+                                </div>
+
+                                <div class="col-md-6 p-3">
+                                    <h5 class="fw-bold mb-1">@produto.Nome</h5>
+                                    <p class="text-muted small mb-2">@produto.Descricao</p>
+
+                                    <div>
+                                        @if (produto.Promocao > 0)
+                                        {
+                                            <span class="text-muted text-decoration-line-through">
+                                                R$ @produto.Vista.ToString("N2", cultura)
+                                            </span>
+                                            <span class="fw-bold text-danger fs-5 ms-2">
+                                                R$ @produto.Promocao.ToString("N2", cultura)
+                                            </span>
+                                        }
+                                        else
+                                        {
+                                            <span class="fw-bold text-primary fs-5">
+                                                R$ @produto.Vista.ToString("N2", cultura)
+                                            </span>
+                                        }
+                                    </div>
+                                </div>
+
+                                <div class="col-md-3 p-3">
+                                    <form asp-action="AtualizarQuantidade" asp-controller="Cliente" method="post" class="d-flex gap-2 mb-2">
+                                        <input type="hidden" name="itemCarrinhoId" value="@item.ItemCarrinhoId" />
+                                        <input type="number" class="form-control text-center" name="quantidade" min="1" value="@item.Quantidade" />
+                                        <button type="submit" class="btn btn-primary"><i class="bi bi-check"></i></button>
+                                    </form>
+
+                                    <form asp-action="RemoverDoCarrinho" asp-controller="Cliente" method="post">
+                                        <input type="hidden" name="itemCarrinhoId" value="@item.ItemCarrinhoId" />
+                                        <button type="submit" class="btn btn-danger w-100"><i class="bi bi-trash"></i> Remover</button>
+                                    </form>
+
+                                    <div class="mt-3 fw-bold">
+                                        Subtotal:<br />
+                                        R$ @subtotal.ToString("N2", cultura)
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+
+            <div class="col-lg-4">
+                @{
+                    decimal totalPix = 0;
+                    decimal totalCartao = 0;
+                    decimal totalBoleto = 0;
+
+                    foreach (var item in Model)
+                    {
+                        var produto = await ViewBag.AdminService.GetProdutoById(item.ProdutoId);
+                        decimal precoPix = produto.Promocao > 0 ? produto.Promocao : produto.Vista;
+
+                        totalPix += precoPix * item.Quantidade;
+                        totalCartao += produto.Cartao * item.Quantidade;
+                        totalBoleto += produto.Boleto * item.Quantidade;
+                    }
+                }
+
+                <div class="card shadow-sm sticky-top" style="top: 80px;">
+                    <div class="card-body">
+                        <h4 class="fw-bold mb-3">Resumo do Pedido</h4>
+
+                        <div class="d-flex justify-content-between mb-2">
+                            <span>Total (PIX/Promoção):</span>
+                            <span class="fw-bold text-danger">R$ @totalPix.ToString("N2", cultura)</span>
+                        </div>
+
+                        <div class="d-flex justify-content-between mb-2">
+                            <span>Total no Cartão:</span>
+                            <span class="fw-bold text-primary">R$ @totalCartao.ToString("N2", cultura)</span>
+                        </div>
+
+                        <div class="d-flex justify-content-between mb-3">
+                            <span>Total no Boleto:</span>
+                            <span class="fw-bold text-secondary">R$ @totalBoleto.ToString("N2", cultura)</span>
+                        </div>
+
+                        <a href="@Url.Action("FinalizarPedido", "Cliente")" class="btn btn-warning fw-bold w-100">
+                            Finalizar Pedido
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>

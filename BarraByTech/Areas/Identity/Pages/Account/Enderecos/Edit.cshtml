@@ -1,0 +1,74 @@
+﻿@page "{id:guid}"
+@model BarraByTech.Areas.Identity.Pages.Account.Enderecos.EditModel
+@{
+    ViewData["Title"] = "Editar Endereço";
+}
+
+<link rel="stylesheet" href="~/css/enderecos.css" />
+
+<div class="page-container">
+
+    <h2 class="page-title">Editar Endereço</h2>
+
+    <form method="post" class="form-card">
+
+        <input type="hidden" asp-for="Endereco.EnderecoId" />
+
+        <div class="mb-3">
+            <label asp-for="Endereco.Cep" class="form-label"></label>
+            <input asp-for="Endereco.Cep" class="form-control" id="cepInput" />
+            <span asp-validation-for="Endereco.Cep" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Endereco.Endereco" class="form-label"></label>
+            <input asp-for="Endereco.Endereco" class="form-control" id="logradouro" />
+            <span asp-validation-for="Endereco.Endereco" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Endereco.Cidade" class="form-label"></label>
+            <input asp-for="Endereco.Cidade" class="form-control" id="cidade" />
+            <span asp-validation-for="Endereco.Cidade" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Endereco.Estado" class="form-label"></label>
+            <input asp-for="Endereco.Estado" class="form-control" id="estado" />
+            <span asp-validation-for="Endereco.Estado" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Endereco.Complemento" class="form-label"></label>
+            <input asp-for="Endereco.Complemento" class="form-control" />
+            <span asp-validation-for="Endereco.Complemento" class="text-danger"></span>
+        </div>
+
+        <button class="btn-save">Salvar Alterações</button>
+        <a asp-page="Index" class="btn-cancel">Cancelar</a>
+
+    </form>
+
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+
+    <script>
+        document.getElementById("cepInput").addEventListener("blur", async function () {
+            let cep = this.value.replace(/\D/g, '');
+
+            if (cep.length !== 8) return;
+
+            const response = await fetch(`https://viacep.com.br/ws/${cep}/json/`);
+            if (!response.ok) return;
+
+            const dados = await response.json();
+            if (dados.erro) return;
+
+            document.getElementById("logradouro").value = dados.logradouro || "";
+            document.getElementById("cidade").value = dados.localidade || "";
+            document.getElementById("estado").value = dados.uf || "";
+        });
+    </script>
+}

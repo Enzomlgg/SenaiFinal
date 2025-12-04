@@ -1,0 +1,44 @@
+﻿@page
+@model BarraByTech.Areas.Identity.Pages.Account.Compras.IndexModel
+@{
+    ViewData["Title"] = "Minhas Compras";
+}
+
+<link rel="stylesheet" href="~/css/compras.css" />
+
+<h2 class="mb-3">Minhas Compras</h2>
+
+@if (Model.Compras == null || !Model.Compras.Any())
+{
+    <div class="alert alert-info">Nenhuma compra registrada.</div>
+}
+else
+{
+    <table class="table table-bordered">
+        <thead class="table-dark">
+            <tr>
+                <th>Pedido ID</th>
+                <th>Método</th>
+                <th>Valor Pago</th>
+                <th>Data do Pagamento</th>
+                <th>Status</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var c in Model.Compras)
+            {
+                <tr>
+                    <td>@c.PedidoId</td>
+                    <td>@c.Metodo</td>
+                    <td>@c.ValorPago.ToString("C")</td>
+                    <td>@c.DataPagamento.ToString("dd/MM/yyyy")</td>
+                    <td>@c.Status</td>
+                    <td>
+                        <a asp-page="Details" asp-route-id="@c.ComprasId" class="btn btn-primary btn-sm">Ver</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

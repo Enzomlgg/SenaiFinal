@@ -1,0 +1,483 @@
+﻿@model BarraByTech.Models.ProdutoViewModel
+@{
+    ViewData["Title"] = "Painel Administrativo";
+}
+
+<link rel="stylesheet" href="~/css/Admin.css" />
+
+<div class="admin-container">
+    <div class="sidebar">
+        <h3>Painel Admin</h3>
+        <button class="sidebar-btn active" onclick="openTab(event, 'tab-categorias')">Categorias</button>
+        <button class="sidebar-btn" onclick="openTab(event, 'tab-marcas')">Marcas e Tipos</button>
+        <button class="sidebar-btn" onclick="openTab(event, 'tab-produtos')">Produtos</button>
+        <button class="sidebar-btn" onclick="openTab(event, 'tab-imagens')">Imagens</button>
+    </div>
+
+    <div class="content-area">
+
+        @if (TempData["Sucesso"] != null)
+        {
+            <div class="msg-sucesso">@TempData["Sucesso"]</div>
+        }
+        @if (TempData["Erro"] != null)
+        {
+            <div class="msg-erro">@TempData["Erro"]</div>
+        }
+
+        <div id="tab-categorias" class="tab-content active">
+            <hr />
+            <h3>Criar Nova Categoria</h3>
+            <form method="post" action="/Admin/CriarCategoria" class="form-criar-cat">
+                <div class="form-group">
+                    <label for="CategoriaNome">Nome da Categoria</label>
+                    <input type="text" id="CategoriaNome" name="CategoriaNome" placeholder="Ex: Eletrônicos" class="form-control" required />
+                </div>
+
+                <div class="form-group">
+                    <label for="CategoriaDescricao">Descrição da Categoria</label>
+                    <textarea id="CategoriaDescricao" name="CategoriaDescricao" placeholder="Breve descrição da categoria (Máx. 150 caracteres)" class="form-control" rows="3" maxlength="150" required></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Criar Categoria</button>
+            </form>
+
+            <hr />
+            <h3>Categorias Existentes</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th style="width: 150px;">Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var categoria in Model.Categorias)
+                    {
+                        <tr>
+                            <td>
+                                <input type="text" form="form-edit-@categoria.CategoriaId" name="CategoriaNome" value="@categoria.CategoriaNome" required />
+                                <input type="text" form="form-edit-@categoria.CategoriaId" name="CategoriaDescricao" value="@categoria.CategoriaDescricao" required />
+                            </td>
+                            <td>
+                                <form id="form-edit-@categoria.CategoriaId" method="post" action="/Admin/EditarCategoria" style="display:inline;">
+                                    <input type="hidden" name="CategoriaId" value="@categoria.CategoriaId" />
+                                    <button type="submit">Salvar</button>
+                                </form>
+                                <form method="post" action="/Admin/RemoverCategoria" style="display:inline;">
+                                    <input type="hidden" name="categoriaId" value="@categoria.CategoriaId" />
+                                    <button type="submit" class="btn-danger" onclick="return confirm('Tem certeza que deseja remover a categoria @categoria.CategoriaNome?');">Remover</button>
+                                </form>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+
+        <div id="tab-marcas" class="tab-content">
+            <div class="marcas-master">
+                <h3>Criar Nova Marca</h3>
+                <form method="post" action="/Admin/CriarMarca" class="form-marca">
+                    <input type="text" name="Nome" placeholder="Nome da Marca (Ex: Intel)" required />
+                    <button type="submit">Criar Marca</button>
+                </form>
+
+                <hr />
+                <h3>Marcas Existentes</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Marca</th>
+                            <th style="width: 280px;">Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var marca in Model.Marcas)
+                        {
+                            <tr>
+                                <td>
+                                    <input type="text" form="form-edit-marca-@marca.MarcaId" name="Nome" value="@marca.Nome" required />
+                                </td>
+                                <td>
+                                    <form id="form-edit-marca-@marca.MarcaId" method="post" action="/Admin/EditarMarca" style="display:inline;">
+                                        <input type="hidden" name="MarcaId" value="@marca.MarcaId" />
+                                        <button type="submit">Salvar</button>
+                                    </form>
+
+                                    <button type="button"
+                                            onclick="carregarTiposMarca('@marca.MarcaId', '@marca.Nome')"
+                                            style="background-color: #1abc9c;">
+                                        Tipos
+                                    </button>
+                                    <form method="post" action="/Admin/RemoverMarca" style="display:inline;">
+                                        <input type="hidden" name="marcaId" value="@marca.MarcaId" />
+                                        <button type="submit" class="btn-danger" onclick="return confirm('Tem certeza que deseja remover a marca @marca.Nome?');">Remover</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+
+            <hr />
+
+            <div id="tipos-marca-detalhe" class="tipos-detail hidden">
+                <p>Selecione uma marca para gerenciar seus tipos.</p>
+            </div>
+        </div>
+
+        <div id="tab-produtos" class="tab-content">
+            <hr />
+
+            <h3 id="form-title">Cadastrar Novo Produto</h3>
+
+            <form id="produto-form" method="post" action="/Admin/CriarProduto">
+                <input type="hidden" id="produto-id" name="ProdutoId" value="" />
+                <input type="hidden" id="caminhos-imagens" name="CaminhosImagens" value="[]" /> <div class="form-group">
+                    <label for="nome-produto">Nome do Produto:</label>
+                    <input type="text" id="nome-produto" name="Nome" required />
+                </div>
+
+                <div class="form-group">
+                    <label for="descricao-produto">Descrição:</label>
+                    <textarea id="descricao-produto" name="Descricao"></textarea>
+                </div>
+
+                <div class="form-group-flex">
+                    <div class="select-group">
+                        <label for="select-marca">Marca:</label>
+                        <select id="select-marca" name="MarcaId" required>
+                            <option value="">-- Selecione uma Marca --</option>
+                            @foreach (var marca in Model.Marcas)
+                            {
+                                <option value="@marca.MarcaId">@marca.Nome</option>
+                            }
+                        </select>
+                    </div>
+
+                    <div class="select-group">
+                        <label for="select-tipomarca">Tipo:</label>
+                        <select id="select-tipomarca" name="TipoMarcaId" disabled required>
+                            <option value="">-- Selecione a Marca primeiro --</option>
+                        </select>
+                    </div>
+
+                    <div class="select-group">
+                        <label for="select-categoria">Categoria:</label>
+                        <select id="select-categoria" name="CategoriaId" required>
+                            <option value="">-- Selecione uma Categoria --</option>
+                            @foreach (var categoria in Model.Categorias)
+                            {
+                                <option value="@categoria.CategoriaId">@categoria.CategoriaNome</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+
+                <hr />
+                <h4>Definir Valores e Estoque</h4>
+
+                <div class="form-group-flex-valores">
+                    <div class="input-group">
+                        <label for="boleto-valor">Boleto (R$):</label>
+                        <input type="number" id="boleto-valor" name="Boleto" step="0.01" required />
+                    </div>
+                    <div class="input-group">
+                        <label for="cartao-valor">Cartão (R$):</label>
+                        <input type="number" id="cartao-valor" name="Cartao" step="0.01" required />
+                    </div>
+                    <div class="input-group">
+                        <label for="vista-valor">À Vista (R$):</label>
+                        <input type="number" id="vista-valor" name="Vista" step="0.01" required />
+                    </div>
+                    <div class="input-group">
+                        <label for="promocao-valor">Promoção (R$):</label>
+                        <input type="number" id="promocao-valor" name="Promocao" step="0.01" />
+                    </div>
+                    <div class="input-group">
+                        <label for="estoque-min">Estoque Mínimo:</label>
+                        <input type="number" id="estoque-min" name="EstoqueMin" required />
+                    </div>
+                    <div class="input-group">
+                        <label for="estoque-atual">Estoque Atual:</label>
+                        <input type="number" id="estoque-atual" name="EstoqueAtual" required />
+                    </div>
+                </div>
+
+                <hr />
+                <button type="submit" id="submit-btn" class="btn-primary" style="width: 100%;">Cadastrar Produto</button>
+                <button type="button" id="cancel-edit-btn" class="btn-danger" style="width: 100%; display: none; margin-top: 10px;">Cancelar Edição e Limpar</button>
+            </form>
+
+            <hr />
+            <h2>Produtos Existentes</h2>
+            <table id="tabela-produtos">
+                <thead>
+                    <tr>
+                        <th style="width: 100px;">ID</th>
+                        <th>Nome</th>
+                        <th>Categoria</th>
+                        <th>Marca</th>
+                        <th>Tipo</th>
+                        <th style="width: 150px;">Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+
+        <div id="tab-imagens" class="tab-content">
+            <hr />
+            <h3>Gerenciar Imagens por Produto</h3>
+
+            <div class="form-group-flex">
+                <div class="select-group">
+                    <label for="select-categoria-upload">Categoria:</label>
+                    <select id="select-categoria-upload" required>
+                        <option value="">-- Selecione a Categoria --</option>
+                        @foreach (var categoria in Model.Categorias)
+                        {
+                            <option value="@categoria.CategoriaId">@categoria.CategoriaNome</option>
+                        }
+                    </select>
+                </div>
+
+                <div class="select-group">
+                    <label for="select-produto-upload">Produto:</label>
+                    <select id="select-produto-upload" required disabled>
+                        <option value="">-- Selecione a Categoria primeiro --</option>
+                    </select>
+                </div>
+            </div>
+
+            <hr />
+
+            <div id="gerenciamento-imagens-detalhe" style="display: none;">
+
+                <h4 id="produto-selecionado-nome">Imagens para: **(Produto)**</h4>
+
+                <form method="post" enctype="multipart/form-data" action="/Upload/EnviarImagem" id="form-upload-imagem-master">
+                    <input type="hidden" name="produtoId" id="produto-id-upload" value="" />
+
+                    <div class="form-group-flex">
+                        <div class="input-group" style="flex-grow: 1;">
+                            <label for="arquivo-upload">Selecionar Imagem:</label>
+                            <input type="file" name="arquivo" id="arquivo-upload" accept="image/*" required />
+                        </div>
+                        <button type="submit" class="btn-primary" style="align-self: flex-end; width: 150px;">
+                            Upload Imagem
+                        </button>
+                    </div>
+                </form>
+
+                <hr />
+
+                <h2>Imagens Existentes</h2>
+                <table id="tabela-imagens-produto">
+                    <thead>
+                        <tr>
+                            <th style="width: 100px;">Nome do Arquivo</th>
+                            <th>Caminho</th>
+                            <th style="width: 120px;">Pré-visualização</th>
+                            <th style="width: 150px;">Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td colspan="4" style="text-align: center;">Carregue o produto para listar as imagens.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div id="msg-selecione-produto">
+                <p style="text-align: center; margin-top: 20px;">Utilize os seletores acima para escolher o produto que deseja gerenciar as imagens.</p>
+            </div>
+        </div>
+        
+    </div>
+</div>
+
+<script src="~/js/Admin.js"></script>
+
+<script>
+    const selectCategoriaUpload = document.getElementById("select-categoria-upload");
+    const selectProdutoUpload = document.getElementById("select-produto-upload");
+    const gerenciamentoDetalhe = document.getElementById("gerenciamento-imagens-detalhe");
+    const tabelaBodyImagens = document.querySelector("#tabela-imagens-produto tbody");
+    const produtoNomeDisplay = document.getElementById("produto-selecionado-nome");
+    const produtoIdHiddenUpload = document.getElementById("produto-id-upload");
+    const msgSelecioneProduto = document.getElementById("msg-selecione-produto");
+    const formUpload = document.getElementById('form-upload-imagem-master'); // Captura o formulário de upload
+
+    // 1. Carrega Produtos ao selecionar a Categoria
+    selectCategoriaUpload.addEventListener("change", async function () {
+        const categoriaId = this.value;
+        selectProdutoUpload.innerHTML = "<option>Carregando...</option>";
+        selectProdutoUpload.disabled = true;
+
+        gerenciamentoDetalhe.style.display = 'none';
+        msgSelecioneProduto.style.display = 'block';
+
+        if (!categoriaId) {
+            selectProdutoUpload.innerHTML = "<option value=''>-- Selecione a Categoria primeiro --</option>";
+            return;
+        }
+
+        try {
+            // Chamada ao seu endpoint GetProdutos no UploadController
+            const response = await fetch(`/Upload/GetProdutos?categoriaId=${categoriaId}`);
+            const produtos = await response.json();
+
+            selectProdutoUpload.innerHTML = "<option value=''>-- Selecione o Produto --</option>";
+            produtos.forEach(p => {
+                selectProdutoUpload.innerHTML += `<option value="${p.id}" data-nome="${p.nome}">${p.nome}</option>`;
+            });
+            selectProdutoUpload.disabled = false;
+        } catch (error) {
+            console.error("Erro ao carregar produtos para upload:", error);
+            selectProdutoUpload.innerHTML = "<option value=''>-- Erro ao carregar --</option>";
+        }
+    });
+
+    // 2. Acionado ao Selecionar um Produto
+    selectProdutoUpload.addEventListener("change", function () {
+        const produtoId = this.value;
+
+        if (produtoId) {
+            const produtoNome = this.options[this.selectedIndex].getAttribute('data-nome');
+
+            produtoNomeDisplay.innerHTML = `Imagens para: **${produtoNome}**`;
+            produtoIdHiddenUpload.value = produtoId;
+
+            gerenciamentoDetalhe.style.display = 'block';
+            msgSelecioneProduto.style.display = 'none';
+
+            carregarImagens(produtoId);
+        } else {
+            produtoNomeDisplay.innerHTML = 'Imagens para: **(Nenhum Produto Selecionado)**';
+            produtoIdHiddenUpload.value = '';
+            gerenciamentoDetalhe.style.display = 'none';
+            msgSelecioneProduto.style.display = 'block';
+            tabelaBodyImagens.innerHTML = '';
+        }
+    });
+
+    // 3. Carrega Imagens Existentes (Com thumbnail)
+    window.carregarImagens = async function (produtoId) {
+        tabelaBodyImagens.innerHTML = '<tr><td colspan="4" style="text-align: center;">Carregando imagens...</td></tr>';
+
+        try {
+            // Chamada ao seu novo endpoint GetImagens no UploadController
+            const response = await fetch(`/Upload/GetImagens?produtoId=${produtoId}`);
+
+            if (!response.ok) throw new Error("Erro ao carregar caminhos de imagens.");
+
+            const imagens = await response.json();
+
+            tabelaBodyImagens.innerHTML = "";
+
+            if (imagens.length === 0) {
+                tabelaBodyImagens.innerHTML = '<tr><td colspan="4" style="text-align: center;">Nenhuma imagem encontrada para este produto.</td></tr>';
+                return;
+            }
+
+            imagens.forEach(img => {
+                const row = tabelaBodyImagens.insertRow();
+
+                row.innerHTML = `
+                    <td>${img.nomeArquivo}</td>
+                    <td>${img.caminho}</td>
+                    <td>
+                        <img src="${img.caminho}" style="max-width: 100px; max-height: 100px; object-fit: contain; border: 1px solid #ccc; padding: 2px;" alt="${img.nomeArquivo}" />
+                    </td>
+                    <td>
+                        <button type="button" class="btn-danger btn-excluir-imagem"
+                                data-caminho="${img.caminho}" data-prodid="${produtoId}">Remover</button>
+                    </td>
+                `;
+            });
+
+            document.querySelectorAll('.btn-excluir-imagem').forEach(button => {
+                button.addEventListener('click', function() {
+                    if (confirm(`Tem certeza que deseja excluir a imagem ${this.dataset.caminho.split('/').pop()}?`)) {
+                        excluirImagem(this.dataset.caminho, this.dataset.prodid);
+                    }
+                });
+            });
+
+        } catch (error) {
+            console.error("Falha ao carregar imagens:", error);
+            tabelaBodyImagens.innerHTML = '<tr><td colspan="4" style="color: red; text-align: center;">Falha ao carregar as imagens.</td></tr>';
+        }
+    }
+
+    // 4. Excluir Imagem (AJAX) - Mantém na mesma página
+    window.excluirImagem = async function (caminho, produtoId) {
+
+        try {
+            // Chamada ao seu novo endpoint ExcluirImagem no UploadController
+            const response = await fetch(`/Upload/ExcluirImagem`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    Caminho: caminho,
+                    ProdutoId: produtoId
+                })
+            });
+
+            if (response.ok) {
+                alert('Imagem excluída com sucesso!');
+                carregarImagens(produtoId);
+            } else {
+                const errorText = await response.text();
+                alert(`Erro ao excluir imagem: ${errorText}`);
+            }
+        } catch (error) {
+            console.error("Erro de rede ou na requisição de exclusão:", error);
+            alert('Erro de rede ao remover a imagem.');
+        }
+    }
+
+    // 5. NOVO: Intercepta o formulário de Upload (AJAX) - Essencial para não sair do Admin/Index
+    formUpload.addEventListener('submit', async function (e) {
+        e.preventDefault(); // Impede o envio padrão do formulário (que causaria o redirecionamento)
+
+        const produtoId = document.getElementById('produto-id-upload').value;
+
+        if (!produtoId) {
+            alert('Erro: Nenhum produto selecionado para upload.');
+            return;
+        }
+
+        const formData = new FormData(this); // Captura o arquivo e o produtoId
+
+        try {
+            // Envia o arquivo via AJAX para o endpoint do controller
+            const response = await fetch(this.action, {
+                method: 'POST',
+                body: formData
+            });
+
+            if (response.ok) {
+                alert('Imagem enviada com sucesso!');
+                this.reset(); // Limpa o campo de arquivo
+
+                // Recarrega apenas a lista de imagens para atualizar a interface, mantendo a página
+                carregarImagens(produtoId);
+
+            } else {
+                const errorText = await response.text();
+                alert(`Erro no upload: ${errorText}`);
+            }
+        } catch (error) {
+            console.error("Erro de rede durante o upload:", error);
+            alert('Erro de rede ao enviar a imagem.');
+        }
+    });
+
+</script>
+

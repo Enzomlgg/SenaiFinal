@@ -1,0 +1,517 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\SENAI3EM\\Desktop\\BarraByTech\\BarraByTech\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\BarraByTech.bundle.scp.css",
+      "PackagePath": "staticwebassets\\BarraByTech.bundle.scp.css"
+    },
+    {
+      "Id": "C:\\Users\\SENAI3EM\\Desktop\\BarraByTech\\BarraByTech\\wwwroot\\Banners\\Armazenamentos_1.png",
+      "PackagePath": "staticwebassets\\Banners\\Armazenamentos_1.png"
+    },
+    {
+      "Id": "C:\\Users\\SENAI3EM\\Desktop\\BarraByTech\\BarraByTech\\wwwroot\\Banners\\Armazenamentos_2.png",
+      "PackagePath": "staticwebassets\\Banners\\Armazenamentos_2.png"
+    },
+    {
+      "Id": "C:\\Users\\SENAI3EM\\Desktop\\BarraByTech\\BarraByTech\\wwwroot\\Banners\\Fontes_1.png",
+      "PackagePath": "staticwebassets\\Banners\\Fontes_1.png"
+    },
+    {
+      "Id": "C:\\Users\\SENAI3EM\\Desktop\\BarraByTech\\BarraByTech\\wwwroot\\Banners\\Fontes_2.png",
+      "PackagePath": "staticwebassets\\Banners\\Fontes_2.png"
+    },
+    {
+      "Id": "C:\\Users\\SENAI3EM\\Desktop\\BarraByTech\\BarraByTech\\wwwroot\\Banners\\Memórias RAM_1.jpg",
+      "PackagePath": "staticwebassets\\Banners\\Memórias RAM_1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\SENAI3EM\\Desktop\\BarraByTech\\BarraByTech\\wwwroot\\Banners\\Memórias RAM_2.png",
+      "PackagePath": "staticwebassets\\Banners\\Memórias RAM_2.png"
+    },
+    {
+      "Id": "C:\\Users\\SENAI3EM\\Desktop\\BarraByTech\\BarraByTech\\wwwroot\\Banners\\Placas Mãe_1.png",
+      "PackagePath": "staticwebassets\\Banners\\Placas Mãe_1.png"
+    },
+    {
+      "Id": "C:\\Users\\SENAI3EM\\Desktop\\BarraByTech\\BarraByTech\\wwwroot\\Banners\\Placas Mãe_2.png",
+      "PackagePath": "staticwebassets\\Banners\\Placas Mãe_2.png"
+    },
+    {
+      "Id": "C:\\Users\\SENAI3EM\\Desktop\\BarraByTech\\BarraByTech\\wwwroot\\Banners\\Placas de Vídeo_1.jpg",
+      "PackagePath": "staticwebassets\\Banners\\Placas de Vídeo_1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\SENAI3EM\\Desktop\\BarraByTech\\BarraByTech\\wwwroot\\Banners\\Placas de Vídeo_2.jpg",
+      "PackagePath": "staticwebassets\\Banners\\Placas de Vídeo_2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\SENAI3EM\\Desktop\\BarraByTech\\BarraByTech\\wwwroot\\Banners\\Processadores_1.jpg",
+      "PackagePath": "staticwebassets\\Banners\\Processadores_1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\SENAI3EM\\Desktop\\BarraByTech\\BarraByTech\\wwwroot\\Banners\\Processadores_2.png",
+      "PackagePath": "staticwebassets\\Banners\\Processadores_2.png"
+    },
+    {
+      "Id": "C:\\Users\\SENAI3EM\\Desktop\\BarraByTech\\BarraByTech\\wwwroot\\css\\Admin.css",
+      "PackagePath": "staticwebassets\\css\\Admin.css"
+    },
+    {
+      "Id": "C:\\Users\\SENAI3EM\\Desktop\\BarraByTech\\BarraByTech\\wwwroot\\css\\compras.css",
+      "PackagePath": "staticwebassets\\css\\compras.css"
+    },
+    {
+      "Id": "C:\\Users\\SENAI3EM\\Desktop\\BarraByTech\\BarraByTech\\wwwroot\\css\\enderecos.css",
+      "PackagePath": "staticwebassets\\css\\enderecos.css"
+    },
+    {
+      "Id": "C:\\Users\\SENAI3EM\\Desktop\\BarraByTech\\BarraByTech\\wwwroot\\css\\identity-manage.css",
+      "PackagePath": "staticwebassets\\css\\identity-manage.css"
+    },
+    {
+      "Id": "C:\\Users\\SENAI3EM\\Desktop\\BarraByTech\\BarraByTech\\wwwroot\\css\\site.css",
+      "PackagePath": "staticwebassets\\css\\site.css"
+    },
+    {
+      "Id": "C:\\Users\\SENAI3EM\\Desktop\\BarraByTech\\BarraByTech\\wwwroot\\favicon.ico",
+      "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "C:\\Users\\SENAI3EM\\Desktop\\BarraByTech\\BarraByTech\\wwwroot\\imagens\\produtos\\06ac9445-b316-4d16-8ff6-000948d20392\\306be96a-be33-4639-9a65-5c647b1c1748.png",
+      "PackagePath": "staticwebassets\\imagens\\produtos\\06ac9445-b316-4d16-8ff6-000948d20392\\306be96a-be33-4639-9a65-5c647b1c1748.png"
+    },
+    {
+      "Id": "C:\\Users\\SENAI3EM\\Desktop\\BarraByTech\\BarraByTech\\wwwroot\\imagens\\produtos\\0ecb6c80-12e8-4889-867d-28a158c3ffcc\\0c45aed9-6f77-4756-a5fa-40491e08e637.png",
+      "PackagePath": "staticwebassets\\imagens\\produtos\\0ecb6c80-12e8-4889-867d-28a158c3ffcc\\0c45aed9-6f77-4756-a5fa-40491e08e637.png"
+    },
+    {
+      "Id": "C:\\Users\\SENAI3EM\\Desktop\\BarraByTech\\BarraByTech\\wwwroot\\imagens\\produtos\\1f518e24-78e5-4ee5-8f68-bdbffe3eca23\\19310295-0d2a-4eda-94d2-661a31931c56.png",
+      "PackagePath": "staticwebassets\\imagens\\produtos\\1f518e24-78e5-4ee5-8f68-bdbffe3eca23\\19310295-0d2a-4eda-94d2-661a31931c56.png"
+    },
+    {
+      "Id": "C:\\Users\\SENAI3EM\\Desktop\\BarraByTech\\BarraByTech\\wwwroot\\imagens\\produtos\\21539c3d-2599-42a0-a893-355613313c08\\74d25fde-5aa2-4cb6-9225-9eddece49488.png",
+      "PackagePath": "staticwebassets\\imagens\\produtos\\21539c3d-2599-42a0-a893-355613313c08\\74d25fde-5aa2-4cb6-9225-9eddece49488.png"
+    },
+    {
+      "Id": "C:\\Users\\SENAI3EM\\Desktop\\BarraByTech\\BarraByTech\\wwwroot\\imagens\\produtos\\2260f691-5900-406f-8c5d-6e1be67c3281\\8a9676cf-07a8-415e-8483-c695c3b75379.png",
+      "PackagePath": "staticwebassets\\imagens\\produtos\\2260f691-5900-406f-8c5d-6e1be67c3281\\8a9676cf-07a8-415e-8483-c695c3b75379.png"
+    },
+    {
+      "Id": "C:\\Users\\SENAI3EM\\Desktop\\BarraByTech\\BarraByTech\\wwwroot\\imagens\\produtos\\3023612d-9400-4d7d-be0a-c4e77f5237c1\\d6b54091-8a7a-4892-a4e7-59bd5956d8c2.png",
+      "PackagePath": "staticwebassets\\imagens\\produtos\\3023612d-9400-4d7d-be0a-c4e77f5237c1\\d6b54091-8a7a-4892-a4e7-59bd5956d8c2.png"
+    },
+    {
+      "Id": "C:\\Users\\SENAI3EM\\Desktop\\BarraByTech\\BarraByTech\\wwwroot\\imagens\\produtos\\39e12101-6723-4b2f-b925-f4aa45170ed9\\4ee8f689-35fe-4094-8191-2bdaa166687f.png",
+      "PackagePath": "staticwebassets\\imagens\\produtos\\39e12101-6723-4b2f-b925-f4aa45170ed9\\4ee8f689-35fe-4094-8191-2bdaa166687f.png"
+    },
+    {
+      "Id": "C:\\Users\\SENAI3EM\\Desktop\\BarraByTech\\BarraByTech\\wwwroot\\imagens\\produtos\\3e298151-2463-40f0-be3d-7982d5a635fe\\495a2293-6eec-48e4-8a67-8a404b00cdc9.png",
+      "PackagePath": "staticwebassets\\imagens\\produtos\\3e298151-2463-40f0-be3d-7982d5a635fe\\495a2293-6eec-48e4-8a67-8a404b00cdc9.png"
+    },
+    {
+      "Id": "C:\\Users\\SENAI3EM\\Desktop\\BarraByTech\\BarraByTech\\wwwroot\\imagens\\produtos\\51681912-20a7-4205-8a5b-19d7fbe4270d\\cacd05c6-78bf-445a-91af-32f841a23282.png",
+      "PackagePath": "staticwebassets\\imagens\\produtos\\51681912-20a7-4205-8a5b-19d7fbe4270d\\cacd05c6-78bf-445a-91af-32f841a23282.png"
+    },
+    {
+      "Id": "C:\\Users\\SENAI3EM\\Desktop\\BarraByTech\\BarraByTech\\wwwroot\\imagens\\produtos\\526f4357-bf58-4271-a72e-798c872345dc\\9ef4df3f-e4d3-458c-a2b5-90420d2226e9.png",
+      "PackagePath": "staticwebassets\\imagens\\produtos\\526f4357-bf58-4271-a72e-798c872345dc\\9ef4df3f-e4d3-458c-a2b5-90420d2226e9.png"
+    },
+    {
+      "Id": "C:\\Users\\SENAI3EM\\Desktop\\BarraByTech\\BarraByTech\\wwwroot\\imagens\\produtos\\55be20f8-bc01-4f4b-b22e-ca3f9dd9eb7e\\d808565d-9275-4a5f-8828-bb0afe5d3d27.png",
+      "PackagePath": "staticwebassets\\imagens\\produtos\\55be20f8-bc01-4f4b-b22e-ca3f9dd9eb7e\\d808565d-9275-4a5f-8828-bb0afe5d3d27.png"
+    },
+    {
+      "Id": "C:\\Users\\SENAI3EM\\Desktop\\BarraByTech\\BarraByTech\\wwwroot\\imagens\\produtos\\55cde218-d464-49e6-95d1-8fcf303f296c\\7d8736b5-3744-4101-a258-461e8d548909.png",
+      "PackagePath": "staticwebassets\\imagens\\produtos\\55cde218-d464-49e6-95d1-8fcf303f296c\\7d8736b5-3744-4101-a258-461e8d548909.png"
+    },
+    {
+      "Id": "C:\\Users\\SENAI3EM\\Desktop\\BarraByTech\\BarraByTech\\wwwroot\\imagens\\produtos\\580f7e20-0f44-43ff-9edd-7cd837c3a463\\5b398327-518f-4198-bbfb-28a8a28980a4.png",
+      "PackagePath": "staticwebassets\\imagens\\produtos\\580f7e20-0f44-43ff-9edd-7cd837c3a463\\5b398327-518f-4198-bbfb-28a8a28980a4.png"
+    },
+    {
+      "Id": "C:\\Users\\SENAI3EM\\Desktop\\BarraByTech\\BarraByTech\\wwwroot\\imagens\\produtos\\5aaa6d4d-d1b7-4a4e-b2d1-067195168c46\\823635a5-810c-4d4a-bb82-fcf2d1618bb2.png",
+      "PackagePath": "staticwebassets\\imagens\\produtos\\5aaa6d4d-d1b7-4a4e-b2d1-067195168c46\\823635a5-810c-4d4a-bb82-fcf2d1618bb2.png"
+    },
+    {
+      "Id": "C:\\Users\\SENAI3EM\\Desktop\\BarraByTech\\BarraByTech\\wwwroot\\imagens\\produtos\\5c050133-6dfc-4ae1-8e84-74f87a4d86b8\\c72e7640-8305-4330-b602-c1c6cf73d194.png",
+      "PackagePath": "staticwebassets\\imagens\\produtos\\5c050133-6dfc-4ae1-8e84-74f87a4d86b8\\c72e7640-8305-4330-b602-c1c6cf73d194.png"
+    },
+    {
+      "Id": "C:\\Users\\SENAI3EM\\Desktop\\BarraByTech\\BarraByTech\\wwwroot\\imagens\\produtos\\5f20b4fa-f9e9-4fb6-8e28-74eb6f396e6f\\c959d36c-d125-4a43-944c-94a28564ea72.png",
+      "PackagePath": "staticwebassets\\imagens\\produtos\\5f20b4fa-f9e9-4fb6-8e28-74eb6f396e6f\\c959d36c-d125-4a43-944c-94a28564ea72.png"
+    },
+    {
+      "Id": "C:\\Users\\SENAI3EM\\Desktop\\BarraByTech\\BarraByTech\\wwwroot\\imagens\\produtos\\6ce76f12-1ffc-4358-92aa-e74e8a97bc97\\d1845b73-b6ab-4859-bdea-27f67b99476e.png",
+      "PackagePath": "staticwebassets\\imagens\\produtos\\6ce76f12-1ffc-4358-92aa-e74e8a97bc97\\d1845b73-b6ab-4859-bdea-27f67b99476e.png"
+    },
+    {
+      "Id": "C:\\Users\\SENAI3EM\\Desktop\\BarraByTech\\BarraByTech\\wwwroot\\imagens\\produtos\\6f8785a3-9d5a-425f-be18-aa8ef0399f2d\\16256f5a-6a97-4fad-9a96-e687f55819ec.png",
+      "PackagePath": "staticwebassets\\imagens\\produtos\\6f8785a3-9d5a-425f-be18-aa8ef0399f2d\\16256f5a-6a97-4fad-9a96-e687f55819ec.png"
+    },
+    {
+      "Id": "C:\\Users\\SENAI3EM\\Desktop\\BarraByTech\\BarraByTech\\wwwroot\\imagens\\produtos\\7ed3165b-a3db-4d8f-a307-94fc73ad65f1\\99ff875e-0f97-4eb3-a082-2573ef62d69c.png",
+      "PackagePath": "staticwebassets\\imagens\\produtos\\7ed3165b-a3db-4d8f-a307-94fc73ad65f1\\99ff875e-0f97-4eb3-a082-2573ef62d69c.png"
+    },
+    {
+      "Id": "C:\\Users\\SENAI3EM\\Desktop\\BarraByTech\\BarraByTech\\wwwroot\\imagens\\produtos\\912a7bd2-f819-4892-9c31-cc444c8016bf\\97e6efcd-3634-42eb-a5df-c4f68bfce565.png",
+      "PackagePath": "staticwebassets\\imagens\\produtos\\912a7bd2-f819-4892-9c31-cc444c8016bf\\97e6efcd-3634-42eb-a5df-c4f68bfce565.png"
+    },
+    {
+      "Id": "C:\\Users\\SENAI3EM\\Desktop\\BarraByTech\\BarraByTech\\wwwroot\\imagens\\produtos\\921225f3-62e0-428a-837e-3e96ff4bdf96\\ece1da65-ad66-44df-a496-856d39ea88dd.png",
+      "PackagePath": "staticwebassets\\imagens\\produtos\\921225f3-62e0-428a-837e-3e96ff4bdf96\\ece1da65-ad66-44df-a496-856d39ea88dd.png"
+    },
+    {
+      "Id": "C:\\Users\\SENAI3EM\\Desktop\\BarraByTech\\BarraByTech\\wwwroot\\imagens\\produtos\\9aa625ec-45ba-4783-8e37-4017b536ba0e\\a66c0f83-2828-4f45-9321-4bdb1d94ff9c.png",
+      "PackagePath": "staticwebassets\\imagens\\produtos\\9aa625ec-45ba-4783-8e37-4017b536ba0e\\a66c0f83-2828-4f45-9321-4bdb1d94ff9c.png"
+    },
+    {
+      "Id": "C:\\Users\\SENAI3EM\\Desktop\\BarraByTech\\BarraByTech\\wwwroot\\imagens\\produtos\\9c98daab-064c-405d-9fa3-37348a9ace94\\a9ae7889-399f-47d8-9685-2d17166257f8.png",
+      "PackagePath": "staticwebassets\\imagens\\produtos\\9c98daab-064c-405d-9fa3-37348a9ace94\\a9ae7889-399f-47d8-9685-2d17166257f8.png"
+    },
+    {
+      "Id": "C:\\Users\\SENAI3EM\\Desktop\\BarraByTech\\BarraByTech\\wwwroot\\imagens\\produtos\\9ca1f534-4281-414b-951e-70abe109bb70\\98d8799e-b463-4d2e-85c9-7cd31e16ba8e.png",
+      "PackagePath": "staticwebassets\\imagens\\produtos\\9ca1f534-4281-414b-951e-70abe109bb70\\98d8799e-b463-4d2e-85c9-7cd31e16ba8e.png"
+    },
+    {
+      "Id": "C:\\Users\\SENAI3EM\\Desktop\\BarraByTech\\BarraByTech\\wwwroot\\imagens\\produtos\\9e5f52db-16fc-473c-b234-7f53c1d2a449\\5cb1bc67-25b8-4140-b316-c3b6fced0798.png",
+      "PackagePath": "staticwebassets\\imagens\\produtos\\9e5f52db-16fc-473c-b234-7f53c1d2a449\\5cb1bc67-25b8-4140-b316-c3b6fced0798.png"
+    },
+    {
+      "Id": "C:\\Users\\SENAI3EM\\Desktop\\BarraByTech\\BarraByTech\\wwwroot\\imagens\\produtos\\abdf7ba0-55f7-4e73-bcc7-c1dede95e95e\\364ff891-64bc-4f2b-bbdb-f75696a44544.png",
+      "PackagePath": "staticwebassets\\imagens\\produtos\\abdf7ba0-55f7-4e73-bcc7-c1dede95e95e\\364ff891-64bc-4f2b-bbdb-f75696a44544.png"
+    },
+    {
+      "Id": "C:\\Users\\SENAI3EM\\Desktop\\BarraByTech\\BarraByTech\\wwwroot\\imagens\\produtos\\b16bbc40-74ec-43e6-9754-2136e561ca13\\41c2c998-550d-45aa-be96-3905a64dd953.png",
+      "PackagePath": "staticwebassets\\imagens\\produtos\\b16bbc40-74ec-43e6-9754-2136e561ca13\\41c2c998-550d-45aa-be96-3905a64dd953.png"
+    },
+    {
+      "Id": "C:\\Users\\SENAI3EM\\Desktop\\BarraByTech\\BarraByTech\\wwwroot\\imagens\\produtos\\bb5f3219-2fa4-4567-8024-6a6a9f26e905\\fb1989ec-2141-4121-8e17-c49f319a44e0.png",
+      "PackagePath": "staticwebassets\\imagens\\produtos\\bb5f3219-2fa4-4567-8024-6a6a9f26e905\\fb1989ec-2141-4121-8e17-c49f319a44e0.png"
+    },
+    {
+      "Id": "C:\\Users\\SENAI3EM\\Desktop\\BarraByTech\\BarraByTech\\wwwroot\\imagens\\produtos\\c07e3e41-c092-443f-a6d7-f454a66cb296\\f7765370-4e46-46cb-a412-71b7127b6d51.png",
+      "PackagePath": "staticwebassets\\imagens\\produtos\\c07e3e41-c092-443f-a6d7-f454a66cb296\\f7765370-4e46-46cb-a412-71b7127b6d51.png"
+    },
+    {
+      "Id": "C:\\Users\\SENAI3EM\\Desktop\\BarraByTech\\BarraByTech\\wwwroot\\imagens\\produtos\\cbef6cbe-6f3e-4c42-8f0d-80fbcee030b9\\30c75508-56ad-4037-b365-44529cd7a2f8.png",
+      "PackagePath": "staticwebassets\\imagens\\produtos\\cbef6cbe-6f3e-4c42-8f0d-80fbcee030b9\\30c75508-56ad-4037-b365-44529cd7a2f8.png"
+    },
+    {
+      "Id": "C:\\Users\\SENAI3EM\\Desktop\\BarraByTech\\BarraByTech\\wwwroot\\imagens\\produtos\\d3954baf-8abc-4fc4-9107-e9efcb28ee50\\48c3aaa0-c606-4ed2-a4e7-5623f82e5dfe.png",
+      "PackagePath": "staticwebassets\\imagens\\produtos\\d3954baf-8abc-4fc4-9107-e9efcb28ee50\\48c3aaa0-c606-4ed2-a4e7-5623f82e5dfe.png"
+    },
+    {
+      "Id": "C:\\Users\\SENAI3EM\\Desktop\\BarraByTech\\BarraByTech\\wwwroot\\imagens\\produtos\\d68f197a-1efe-4549-9ac7-f38b26813e53\\92a45fdc-85e3-4815-bd2e-210c4e87cfd5.png",
+      "PackagePath": "staticwebassets\\imagens\\produtos\\d68f197a-1efe-4549-9ac7-f38b26813e53\\92a45fdc-85e3-4815-bd2e-210c4e87cfd5.png"
+    },
+    {
+      "Id": "C:\\Users\\SENAI3EM\\Desktop\\BarraByTech\\BarraByTech\\wwwroot\\imagens\\produtos\\d8871135-e851-4f3d-8072-6d3766bb2aa5\\d6c9b48b-dd6c-4474-82a9-7da21cd0e959.png",
+      "PackagePath": "staticwebassets\\imagens\\produtos\\d8871135-e851-4f3d-8072-6d3766bb2aa5\\d6c9b48b-dd6c-4474-82a9-7da21cd0e959.png"
+    },
+    {
+      "Id": "C:\\Users\\SENAI3EM\\Desktop\\BarraByTech\\BarraByTech\\wwwroot\\imagens\\produtos\\e1cabb7c-6346-4bcf-b9f0-68203dc48b89\\fd908573-d7d3-4a25-817f-73704ad19258.png",
+      "PackagePath": "staticwebassets\\imagens\\produtos\\e1cabb7c-6346-4bcf-b9f0-68203dc48b89\\fd908573-d7d3-4a25-817f-73704ad19258.png"
+    },
+    {
+      "Id": "C:\\Users\\SENAI3EM\\Desktop\\BarraByTech\\BarraByTech\\wwwroot\\imagens\\produtos\\e34f73e1-21be-444e-a59e-eb29bb1456f9\\20d5a5f6-7c3e-4abf-97b1-00bcc4b36d02.png",
+      "PackagePath": "staticwebassets\\imagens\\produtos\\e34f73e1-21be-444e-a59e-eb29bb1456f9\\20d5a5f6-7c3e-4abf-97b1-00bcc4b36d02.png"
+    },
+    {
+      "Id": "C:\\Users\\SENAI3EM\\Desktop\\BarraByTech\\BarraByTech\\wwwroot\\imagens\\produtos\\e3db13f4-9893-40d7-b31d-285eca3c374e\\be462914-8e77-4d84-9aa5-25f742f7a853.png",
+      "PackagePath": "staticwebassets\\imagens\\produtos\\e3db13f4-9893-40d7-b31d-285eca3c374e\\be462914-8e77-4d84-9aa5-25f742f7a853.png"
+    },
+    {
+      "Id": "C:\\Users\\SENAI3EM\\Desktop\\BarraByTech\\BarraByTech\\wwwroot\\imagens\\produtos\\e87a766b-1943-40e4-94f2-949a9cfb397c\\7eb02ece-554a-44ad-bf91-cbd65fe02dfc.jpg",
+      "PackagePath": "staticwebassets\\imagens\\produtos\\e87a766b-1943-40e4-94f2-949a9cfb397c\\7eb02ece-554a-44ad-bf91-cbd65fe02dfc.jpg"
+    },
+    {
+      "Id": "C:\\Users\\SENAI3EM\\Desktop\\BarraByTech\\BarraByTech\\wwwroot\\imagens\\produtos\\f402927d-2444-4c31-8584-280fd33d3841\\819af8cc-0419-439a-9a35-eb23ae1a1b3f.png",
+      "PackagePath": "staticwebassets\\imagens\\produtos\\f402927d-2444-4c31-8584-280fd33d3841\\819af8cc-0419-439a-9a35-eb23ae1a1b3f.png"
+    },
+    {
+      "Id": "C:\\Users\\SENAI3EM\\Desktop\\BarraByTech\\BarraByTech\\wwwroot\\imagens\\produtos\\f452209d-f2f3-4cb6-9593-7dbdc7b6c48f\\74184aaa-1f1d-4ea1-a983-8323f54f1150.png",
+      "PackagePath": "staticwebassets\\imagens\\produtos\\f452209d-f2f3-4cb6-9593-7dbdc7b6c48f\\74184aaa-1f1d-4ea1-a983-8323f54f1150.png"
+    },
+    {
+      "Id": "C:\\Users\\SENAI3EM\\Desktop\\BarraByTech\\BarraByTech\\wwwroot\\imagens\\produtos\\f460c5ad-932f-4555-ab21-babaea9626fa\\042cfa56-354a-4772-9070-7365fe4a4694.png",
+      "PackagePath": "staticwebassets\\imagens\\produtos\\f460c5ad-932f-4555-ab21-babaea9626fa\\042cfa56-354a-4772-9070-7365fe4a4694.png"
+    },
+    {
+      "Id": "C:\\Users\\SENAI3EM\\Desktop\\BarraByTech\\BarraByTech\\wwwroot\\imagens\\produtos\\f91df1c7-bd0a-485e-9c92-c5dcef4a477f\\a18576e7-0be7-47dd-9af2-a755af6ab18d.png",
+      "PackagePath": "staticwebassets\\imagens\\produtos\\f91df1c7-bd0a-485e-9c92-c5dcef4a477f\\a18576e7-0be7-47dd-9af2-a755af6ab18d.png"
+    },
+    {
+      "Id": "C:\\Users\\SENAI3EM\\Desktop\\BarraByTech\\BarraByTech\\wwwroot\\img\\Icon.png",
+      "PackagePath": "staticwebassets\\img\\Icon.png"
+    },
+    {
+      "Id": "C:\\Users\\SENAI3EM\\Desktop\\BarraByTech\\BarraByTech\\wwwroot\\img\\integrantes\\costa.png",
+      "PackagePath": "staticwebassets\\img\\integrantes\\costa.png"
+    },
+    {
+      "Id": "C:\\Users\\SENAI3EM\\Desktop\\BarraByTech\\BarraByTech\\wwwroot\\img\\integrantes\\enzo.png",
+      "PackagePath": "staticwebassets\\img\\integrantes\\enzo.png"
+    },
+    {
+      "Id": "C:\\Users\\SENAI3EM\\Desktop\\BarraByTech\\BarraByTech\\wwwroot\\img\\integrantes\\mendes.png",
+      "PackagePath": "staticwebassets\\img\\integrantes\\mendes.png"
+    },
+    {
+      "Id": "C:\\Users\\SENAI3EM\\Desktop\\BarraByTech\\BarraByTech\\wwwroot\\img\\integrantes\\theo.png",
+      "PackagePath": "staticwebassets\\img\\integrantes\\theo.png"
+    },
+    {
+      "Id": "C:\\Users\\SENAI3EM\\Desktop\\BarraByTech\\BarraByTech\\wwwroot\\js\\Admin.js",
+      "PackagePath": "staticwebassets\\js\\Admin.js"
+    },
+    {
+      "Id": "C:\\Users\\SENAI3EM\\Desktop\\BarraByTech\\BarraByTech\\wwwroot\\js\\site.js",
+      "PackagePath": "staticwebassets\\js\\site.js"
+    },
+    {
+      "Id": "C:\\Users\\SENAI3EM\\Desktop\\BarraByTech\\BarraByTech\\wwwroot\\lib\\bootstrap\\LICENSE",
+      "PackagePath": "staticwebassets\\lib\\bootstrap"
+    },
+    {
+      "Id": "C:\\Users\\SENAI3EM\\Desktop\\BarraByTech\\BarraByTech\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css"
+    },
+    {
+      "Id": "C:\\Users\\SENAI3EM\\Desktop\\BarraByTech\\BarraByTech\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map"
+    },
+    {
+      "Id": "C:\\Users\\SENAI3EM\\Desktop\\BarraByTech\\BarraByTech\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css"
+    },
+    {
+      "Id": "C:\\Users\\SENAI3EM\\Desktop\\BarraByTech\\BarraByTech\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\SENAI3EM\\Desktop\\BarraByTech\\BarraByTech\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css"
+    },
+    {
+      "Id": "C:\\Users\\SENAI3EM\\Desktop\\BarraByTech\\BarraByTech\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map"
+    },
+    {
+      "Id": "C:\\Users\\SENAI3EM\\Desktop\\BarraByTech\\BarraByTech\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css"
+    },
+    {
+      "Id": "C:\\Users\\SENAI3EM\\Desktop\\BarraByTech\\BarraByTech\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\SENAI3EM\\Desktop\\BarraByTech\\BarraByTech\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css"
+    },
+    {
+      "Id": "C:\\Users\\SENAI3EM\\Desktop\\BarraByTech\\BarraByTech\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map"
+    },
+    {
+      "Id": "C:\\Users\\SENAI3EM\\Desktop\\BarraByTech\\BarraByTech\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css"
+    },
+    {
+      "Id": "C:\\Users\\SENAI3EM\\Desktop\\BarraByTech\\BarraByTech\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\SENAI3EM\\Desktop\\BarraByTech\\BarraByTech\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css"
+    },
+    {
+      "Id": "C:\\Users\\SENAI3EM\\Desktop\\BarraByTech\\BarraByTech\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map"
+    },
+    {
+      "Id": "C:\\Users\\SENAI3EM\\Desktop\\BarraByTech\\BarraByTech\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css"
+    },
+    {
+      "Id": "C:\\Users\\SENAI3EM\\Desktop\\BarraByTech\\BarraByTech\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\SENAI3EM\\Desktop\\BarraByTech\\BarraByTech\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css"
+    },
+    {
+      "Id": "C:\\Users\\SENAI3EM\\Desktop\\BarraByTech\\BarraByTech\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map"
+    },
+    {
+      "Id": "C:\\Users\\SENAI3EM\\Desktop\\BarraByTech\\BarraByTech\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css"
+    },
+    {
+      "Id": "C:\\Users\\SENAI3EM\\Desktop\\BarraByTech\\BarraByTech\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\SENAI3EM\\Desktop\\BarraByTech\\BarraByTech\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css"
+    },
+    {
+      "Id": "C:\\Users\\SENAI3EM\\Desktop\\BarraByTech\\BarraByTech\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map"
+    },
+    {
+      "Id": "C:\\Users\\SENAI3EM\\Desktop\\BarraByTech\\BarraByTech\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css"
+    },
+    {
+      "Id": "C:\\Users\\SENAI3EM\\Desktop\\BarraByTech\\BarraByTech\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\SENAI3EM\\Desktop\\BarraByTech\\BarraByTech\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css"
+    },
+    {
+      "Id": "C:\\Users\\SENAI3EM\\Desktop\\BarraByTech\\BarraByTech\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css.map"
+    },
+    {
+      "Id": "C:\\Users\\SENAI3EM\\Desktop\\BarraByTech\\BarraByTech\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css"
+    },
+    {
+      "Id": "C:\\Users\\SENAI3EM\\Desktop\\BarraByTech\\BarraByTech\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\SENAI3EM\\Desktop\\BarraByTech\\BarraByTech\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css"
+    },
+    {
+      "Id": "C:\\Users\\SENAI3EM\\Desktop\\BarraByTech\\BarraByTech\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map"
+    },
+    {
+      "Id": "C:\\Users\\SENAI3EM\\Desktop\\BarraByTech\\BarraByTech\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css"
+    },
+    {
+      "Id": "C:\\Users\\SENAI3EM\\Desktop\\BarraByTech\\BarraByTech\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\SENAI3EM\\Desktop\\BarraByTech\\BarraByTech\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js"
+    },
+    {
+      "Id": "C:\\Users\\SENAI3EM\\Desktop\\BarraByTech\\BarraByTech\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map"
+    },
+    {
+      "Id": "C:\\Users\\SENAI3EM\\Desktop\\BarraByTech\\BarraByTech\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js"
+    },
+    {
+      "Id": "C:\\Users\\SENAI3EM\\Desktop\\BarraByTech\\BarraByTech\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map"
+    },
+    {
+      "Id": "C:\\Users\\SENAI3EM\\Desktop\\BarraByTech\\BarraByTech\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js"
+    },
+    {
+      "Id": "C:\\Users\\SENAI3EM\\Desktop\\BarraByTech\\BarraByTech\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map"
+    },
+    {
+      "Id": "C:\\Users\\SENAI3EM\\Desktop\\BarraByTech\\BarraByTech\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js"
+    },
+    {
+      "Id": "C:\\Users\\SENAI3EM\\Desktop\\BarraByTech\\BarraByTech\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map"
+    },
+    {
+      "Id": "C:\\Users\\SENAI3EM\\Desktop\\BarraByTech\\BarraByTech\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js"
+    },
+    {
+      "Id": "C:\\Users\\SENAI3EM\\Desktop\\BarraByTech\\BarraByTech\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js.map"
+    },
+    {
+      "Id": "C:\\Users\\SENAI3EM\\Desktop\\BarraByTech\\BarraByTech\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js"
+    },
+    {
+      "Id": "C:\\Users\\SENAI3EM\\Desktop\\BarraByTech\\BarraByTech\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map"
+    },
+    {
+      "Id": "C:\\Users\\SENAI3EM\\Desktop\\BarraByTech\\BarraByTech\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
+    },
+    {
+      "Id": "C:\\Users\\SENAI3EM\\Desktop\\BarraByTech\\BarraByTech\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js"
+    },
+    {
+      "Id": "C:\\Users\\SENAI3EM\\Desktop\\BarraByTech\\BarraByTech\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js"
+    },
+    {
+      "Id": "C:\\Users\\SENAI3EM\\Desktop\\BarraByTech\\BarraByTech\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\LICENSE.md"
+    },
+    {
+      "Id": "C:\\Users\\SENAI3EM\\Desktop\\BarraByTech\\BarraByTech\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.js"
+    },
+    {
+      "Id": "C:\\Users\\SENAI3EM\\Desktop\\BarraByTech\\BarraByTech\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.min.js"
+    },
+    {
+      "Id": "C:\\Users\\SENAI3EM\\Desktop\\BarraByTech\\BarraByTech\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.js"
+    },
+    {
+      "Id": "C:\\Users\\SENAI3EM\\Desktop\\BarraByTech\\BarraByTech\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.min.js"
+    },
+    {
+      "Id": "C:\\Users\\SENAI3EM\\Desktop\\BarraByTech\\BarraByTech\\wwwroot\\lib\\jquery\\LICENSE.txt",
+      "PackagePath": "staticwebassets\\lib\\jquery\\LICENSE.txt"
+    },
+    {
+      "Id": "C:\\Users\\SENAI3EM\\Desktop\\BarraByTech\\BarraByTech\\wwwroot\\lib\\jquery\\dist\\jquery.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.js"
+    },
+    {
+      "Id": "C:\\Users\\SENAI3EM\\Desktop\\BarraByTech\\BarraByTech\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.js"
+    },
+    {
+      "Id": "C:\\Users\\SENAI3EM\\Desktop\\BarraByTech\\BarraByTech\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.BarraByTech.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.BarraByTech.props",
+      "PackagePath": "build\\BarraByTech.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.BarraByTech.props",
+      "PackagePath": "buildMultiTargeting\\BarraByTech.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.BarraByTech.props",
+      "PackagePath": "buildTransitive\\BarraByTech.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

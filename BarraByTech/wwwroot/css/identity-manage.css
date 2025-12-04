@@ -1,0 +1,36 @@
+﻿/* Container principal do menu */
+.manage-nav {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+    /* Links gerais */
+    .manage-nav .nav-link {
+        font-weight: 500;
+        color: #555;
+        padding: 10px 14px;
+        border-radius: 8px;
+        margin-bottom: 6px;
+        transition: all 0.2s ease-in-out;
+    }
+
+        /* Hover */
+        .manage-nav .nav-link:hover {
+            background: #e9f2ff;
+            color: #0d6efd;
+        }
+
+        /* Link ativo */
+        .manage-nav .nav-link.active {
+            background: #0d6efd;
+            color: #fff !important;
+            font-weight: 600;
+            box-shadow: 0 2px 6px rgba(13, 110, 253, 0.35);
+        }
+
+        /* Remover o feio do :focus do bootstrap */
+        .manage-nav .nav-link:focus {
+            box-shadow: none !important;
+        }

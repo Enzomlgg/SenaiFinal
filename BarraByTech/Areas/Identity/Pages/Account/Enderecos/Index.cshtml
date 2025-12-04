@@ -1,0 +1,47 @@
+﻿@page
+@model BarraByTech.Areas.Identity.Pages.Account.Enderecos.IndexModel
+@{
+    ViewData["Title"] = "Meus Endereços";
+}
+
+<link rel="stylesheet" href="~/css/enderecos.css" />
+
+<h2 class="mb-3">Meus Endereços</h2>
+
+<a asp-page="Create" class="btn btn-success mb-3">+ Adicionar Endereço</a>
+
+@if (Model.Enderecos == null || !Model.Enderecos.Any())
+{
+    <div class="alert alert-info">Nenhum endereço cadastrado.</div>
+}
+else
+{
+    <table class="table table-bordered">
+        <thead class="table-dark">
+            <tr>
+                <th>CEP</th>
+                <th>Endereço</th>
+                <th>Cidade</th>
+                <th>Estado</th>
+                <th>Complemento</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var e in Model.Enderecos)
+            {
+                <tr>
+                    <td>@e.Cep</td>
+                    <td>@e.Endereco</td>
+                    <td>@e.Cidade</td>
+                    <td>@e.Estado</td>
+                    <td>@e.Complemento</td>
+                    <td>
+                        <a asp-page="Edit" asp-route-id="@e.EnderecoId" class="btn btn-warning btn-sm">Editar</a>
+                        <a asp-page="Delete" asp-route-id="@e.EnderecoId" class="btn btn-danger btn-sm ms-1">Excluir</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

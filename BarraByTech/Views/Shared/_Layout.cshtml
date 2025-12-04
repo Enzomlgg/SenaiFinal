@@ -1,0 +1,238 @@
+﻿@using BarraByTech.Services
+@inject ClienteService ClienteService
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - BarraByTech</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" />
+
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/BarraByTech.styles.css" asp-append-version="true" />
+</head>
+
+<body>
+
+    <nav id="topo" class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+        <div class="container d-flex align-items-center justify-content-between">
+
+            <div class="d-flex align-items-center gap-3">
+
+                <button class="btn btn-outline-primary me-3"
+                        type="button"
+                        data-bs-toggle="offcanvas"
+                        data-bs-target="#offcanvasNavbar">
+                    <i class="bi bi-list"></i>
+                </button>
+
+                <a class="d-flex align-items-center gap-2 text-decoration-none" asp-controller="Home" asp-action="Index">
+                    <img src="~/img/Icon.png" alt="BarraBytech" class="logo" style="height:46px;object-fit:contain" />
+                    <span class="brand-text fw-bold ">BarraBytech</span>
+                </a>
+            </div>
+
+            <div class="flex-fill d-flex justify-content-center mx-3" style="max-width:900px;">
+                <div class="search-box w-100" style="max-width:700px; position:relative;">
+                    <input id="searchInput" class="form-control" type="search" placeholder="Buscar peças, placas, processadores..." aria-label="Buscar">
+                    <i class="bi bi-search icon"
+                       style="position:absolute; right:14px; top:50%; transform:translateY(-50%); color:#6c757d;"></i>
+
+                    <div id="searchResults" class="list-group" style="position:absolute; z-index:1000; width:100%; border-radius: 0 0 .25rem .25rem; box-shadow: 0 4px 6px rgba(0,0,0,.1); display: none;">
+                    </div>
+                </div>
+            </div>
+
+            <partial name="_LoginPartial" />
+        </div>
+    </nav>
+
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title">Categorias</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+        </div>
+
+        <div class="offcanvas-body">
+
+            <ul class="navbar-nav flex-grow-1" id="categoriasList">
+                @{
+                    var categorias = await ClienteService.GetCategorias();
+                }
+
+                @foreach (var categoria in categorias)
+                {
+                    <li class="nav-item">
+                        <a class="nav-link"
+                           asp-controller="Categorias"
+                           asp-action="Detalhes"
+                           asp-route-id="@categoria.CategoriaId">
+                            <i class="bi bi-bag-dash-fill"></i> @categoria.CategoriaNome
+                        </a>
+                    </li>
+                }
+            </ul>
+
+            <form class="d-flex mt-3" role="search">
+                <input id="searchCategorias" class="form-control me-2" type="search" placeholder="Buscar..." aria-label="Search" />
+            </form>
+
+        </div>
+    </div>
+
+    <div class="container my-4">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="footer bg-dark text-white pt-5 pb-4 mt-5 shadow-lg">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-md-4 mb-4">
+                    <h5 class="fw-bold mb-3 border-bottom border-primary pb-2">
+                        <span class="brand text-primary">BarraBytech</span>
+                    </h5>
+                    <p class="small text-white-50">
+                        Sua loja de hardware gamer de confiança. Tecnologia de ponta com o melhor atendimento.
+                    </p>
+                    <div class="social-links mt-3">
+                        <a href="#" class="btn btn-outline-primary btn-sm me-2"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="btn btn-outline-primary btn-sm me-2"><i class="bi bi-instagram"></i></a>
+                        <a href="#" class="btn btn-outline-primary btn-sm"><i class="bi bi-twitter-x"></i></a>
+                    </div>
+                </div>
+
+                <div class="col-md-3 mb-4">
+                    <h5 class="fw-bold mb-3 border-bottom border-secondary pb-2">Navegação Rápida</h5>
+                    <ul class="list-unstyled">
+                        <li><a asp-controller="Home" asp-action="Index" class="text-white-50 text-decoration-none small hover-link">Página Inicial</a></li>
+                        <li><a asp-area="Identity" asp-page="/Account/Manage/Index" class="text-white-50 text-decoration-none small hover-link">Visualizar Perfil</a></li>
+                        <li><a asp-area="" asp-controller="Cliente" asp-action="Favoritos" class="text-white-50 text-decoration-none small hover-link">Favoritos</a></li>
+                        <li><a asp-area="" asp-controller="Cliente" asp-action="Integrantes" class="text-white-50 text-decoration-none small hover-link">Informações</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-md-3 mb-4">
+                    <h5 class="fw-bold mb-3 border-bottom border-secondary pb-2">Contato e Suporte</h5>
+                    <ul class="list-unstyled small text-white-50">
+                        <li><i class="bi bi-geo-alt-fill me-2 text-primary"></i> Rua da Tecnologia, 123</li>
+                        <li><i class="bi bi-telephone-fill me-2 text-primary"></i> (14) 99741-8610</li>
+                        <li><i class="bi bi-envelope-fill me-2 text-primary"></i> enzomlosigg@gmail.com</li>
+                        <li class="mt-2"><a href="#" class="text-white-50 text-decoration-none small hover-link">Política de Troca</a></li>
+                        <li><a href="#" class="text-white-50 text-decoration-none small hover-link">Termos de Uso</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-md-2 mb-4">
+                    <h5 class="fw-bold mb-3 border-bottom border-secondary pb-2">Pagamento</h5>
+                    <div class="text-white-50 small">
+                        <p>Visa, Master, Pix, Boleto</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <hr class="text-secondary mt-3 mb-3">
+
+            <div class="row">
+                <div class="col-12 text-center">
+                    <p class="mb-0 small text-white-50">
+                        &copy; 2025 <strong class="text-primary">BarraBytech</strong> — Todos os direitos reservados.
+                        | Desenvolvido por Enzo Losi, Gabriel Costa, Theo Cantador e Gabriel Mendes.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+
+            // LÓGICA DO MENU LATERAL (searchCategorias)
+            $("#searchCategorias").on("keyup", function() {
+                var value = $(this).val().toLowerCase();
+                $("#categoriasList li").filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+
+            // PREVINE O SUBMIT DO FORM DE BUSCA PRINCIPAL
+            $("form[role='search']").on("submit", function(e){
+                e.preventDefault();
+            });
+
+
+            // LÓGICA DA BUSCA PRINCIPAL (AUTOCOMPLETE)
+            const searchInput = $('#searchInput');
+            const searchResults = $('#searchResults');
+            const minChars = 3;
+            let timeout = null;
+
+            function fetchResults(query) {
+                if (query.length < minChars) {
+                    searchResults.empty().hide();
+                    return;
+                }
+
+                $.ajax({
+                    url: `https://localhost:7289/api/Produtos/search?q=${query}`,
+                    method: 'GET',
+                    success: function(produtos) {
+                        searchResults.empty();
+
+                        if (produtos && produtos.length > 0) {
+                            produtos.forEach(produto => {
+                                const linkUrl = `/Produto/DetalheProduto/${produto.produtoId}`;
+                                const item = $(`
+                                    <a href="${linkUrl}" class="list-group-item list-group-item-action">
+                                        ${produto.nome}
+                                    </a>
+                                `);
+                                searchResults.append(item);
+                            });
+                            searchResults.show();
+                        } else {
+                            searchResults.empty().hide();
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        console.error("Erro na busca da API. Status:", status, "Erro:", error);
+                        searchResults.empty().hide();
+                    }
+                });
+            }
+
+            searchInput.on('keyup', function() {
+                const query = $(this).val().trim();
+                clearTimeout(timeout);
+                timeout = setTimeout(() => {
+                    fetchResults(query);
+                }, 300);
+            });
+
+            $(document).on('click', function(e) {
+                if (!$(e.target).closest('.search-box').length) {
+                    searchResults.hide();
+                }
+            });
+
+            searchInput.on('focus', function() {
+                if (searchResults.children().length > 0) {
+                    searchResults.show();
+                }
+            });
+        });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+
+</body>
+</html>

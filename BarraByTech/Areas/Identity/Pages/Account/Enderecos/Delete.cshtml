@@ -1,0 +1,39 @@
+﻿@page
+@model BarraByTech.Areas.Identity.Pages.Account.Enderecos.DeleteModel
+@{
+    ViewData["Title"] = "Excluir Endereço";
+}
+
+<link rel="stylesheet" href="~/css/enderecos.css" />
+
+<h2 class="text-danger mb-4">Excluir Endereço</h2>
+
+<div class="alert alert-warning">
+    Tem certeza de que deseja remover este endereço?
+</div>
+
+<div class="card p-4 shadow-sm">
+
+    <dl class="row">
+        <dt class="col-sm-3">CEP:</dt>
+        <dd class="col-sm-9">@Model.Endereco.Cep</dd>
+
+        <dt class="col-sm-3">Endereço:</dt>
+        <dd class="col-sm-9">@Model.Endereco.Endereco</dd>
+
+        <dt class="col-sm-3">Cidade:</dt>
+        <dd class="col-sm-9">@Model.Endereco.Cidade</dd>
+
+        <dt class="col-sm-3">Estado:</dt>
+        <dd class="col-sm-9">@Model.Endereco.Estado</dd>
+
+        <dt class="col-sm-3">Complemento:</dt>
+        <dd class="col-sm-9">@Model.Endereco.Complemento</dd>
+    </dl>
+
+    <form method="post">
+        <button type="submit" class="btn btn-danger">Excluir</button>
+        <a asp-page="Index" class="btn btn-secondary ms-2">Cancelar</a>
+    </form>
+
+</div>

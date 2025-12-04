@@ -1,0 +1,46 @@
+﻿@model List<EnderecoClienteDTO>
+@using BarraByTech.Models.DTO
+@using BarraByTech.Models.Enums
+@{
+    ViewData["Title"] = "Finalizar Pedido";
+}
+
+<div class="container mt-4">
+    <h3 class="fw-bold mb-4">Finalizar Pedido</h3>
+
+    @if (Model == null || !Model.Any())
+    {
+        <div class="alert alert-warning">
+            Você não possui endereços cadastrados.
+            <a href="@Url.Action("CriarEndereco", "Cliente")">Cadastre um endereço</a>
+        </div>
+    }
+    else
+    {
+        <form asp-action="FinalizarPedido" method="post">
+            <div class="mb-3">
+                <label class="form-label fw-bold">Selecione o endereço de entrega:</label>
+                <select name="enderecoId" class="form-select" required>
+                    @foreach (var endereco in Model)
+                    {
+                        <option value="@endereco.EnderecoId">
+                            @endereco.Endereco, @endereco.Complemento - @endereco.Cidade/@endereco.Estado
+                        </option>
+                    }
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label fw-bold">Método de pagamento:</label>
+                <select name="metodoPagamento" class="form-select" required>
+                    @foreach (var metodo in Enum.GetValues(typeof(MetodosPagamento)).Cast<MetodosPagamento>())
+                    {
+                        <option value="@metodo">@metodo.ToString()</option>
+                    }
+                </select>
+            </div>
+
+            <button type="submit" class="btn btn-success w-100 fw-bold">Pagar</button>
+        </form>
+    }
+</div>

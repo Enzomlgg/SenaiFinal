@@ -1,0 +1,233 @@
+html[b-k7kaz3ictc], body[b-k7kaz3ictc] {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+body[b-k7kaz3ictc] {
+    background-color: #f5f5f5;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+/* Contêiner principal para o conteúdo, que se expande para empurrar o footer */
+#main-content[b-k7kaz3ictc] {
+    flex-grow: 1;
+}
+
+a[b-k7kaz3ictc] {
+    text-decoration: none;
+    color: inherit;
+    transition: .2s;
+}
+
+    a:hover[b-k7kaz3ictc] {
+        opacity: .8;
+    }
+
+/* --- Topo e Navbar Principal --- */
+#topo.navbar[b-k7kaz3ictc] {
+    background-color: #fefefd;
+    padding: 10px 0;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.logo[b-k7kaz3ictc] {
+    height: 46px;
+    object-fit: contain;
+}
+
+.brand-text[b-k7kaz3ictc] {
+    font-size: 1.3rem;
+    font-weight: 700;
+    letter-spacing: .5px;
+    color: #0d47a1;
+}
+
+.search-box[b-k7kaz3ictc] {
+    position: relative;
+}
+
+    .search-box input[b-k7kaz3ictc] {
+        border-radius: 20px;
+        padding-right: 40px;
+        border: 1px solid #ced4da;
+    }
+
+    .search-box .icon[b-k7kaz3ictc] {
+        position: absolute;
+        top: 50%;
+        right: 14px;
+        transform: translateY(-50%);
+        font-size: 18px;
+        color: #6c757d;
+        pointer-events: none;
+    }
+
+.nav-links[b-k7kaz3ictc] {
+    background-color: #ffffff;
+    border-bottom: 1px solid #eee;
+}
+
+    .nav-links a[b-k7kaz3ictc] {
+        font-weight: 500;
+        color: #222;
+        padding: 8px 12px;
+        display: inline-block;
+    }
+
+        .nav-links a:hover[b-k7kaz3ictc] {
+            color: #ffae00;
+            background-color: #f9f9f9;
+        }
+
+/* --- Menu Lateral (Offcanvas - OTIMIZADO) --- */
+.offcanvas[b-k7kaz3ictc] {
+    background-color: #ffffff;
+    color: #333;
+    border-right: none;
+    box-shadow: 4px 0 15px rgba(0,0,0,0.1); /* Sombra mais visível */
+}
+
+.offcanvas-header[b-k7kaz3ictc] {
+    border-bottom: 1px solid #e9ecef; /* Linha de separação mais suave */
+    padding: 1rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Ajustado para melhor layout */
+    position: relative;
+}
+
+.offcanvas-title[b-k7kaz3ictc] {
+    color: #0d47a1;
+    font-weight: 700;
+    font-size: 1.4rem; /* Um pouco maior */
+    margin: 0;
+}
+
+.offcanvas .btn-close[b-k7kaz3ictc] {
+    opacity: 0.6;
+    transition: opacity 0.2s;
+}
+
+    .offcanvas .btn-close:hover[b-k7kaz3ictc] {
+        opacity: 1;
+    }
+
+.offcanvas-body[b-k7kaz3ictc] {
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.offcanvas .navbar-nav[b-k7kaz3ictc] {
+    padding: 0; /* Remove padding desnecessário */
+    width: 100%;
+}
+
+/* --- ESTILO DOS ITENS DE CATEGORIA --- */
+.offcanvas .nav-link[b-k7kaz3ictc] {
+    color: #343a40 !important; /* Texto escuro */
+    font-size: 1rem;
+    font-weight: 600; /* Mais negrito */
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 1rem 1.5rem; /* Mais padding vertical e horizontal */
+
+    border-left: 5px solid transparent; /* Aumenta a espessura da barra lateral */
+    transition: background-color 0.3s, border-left-color 0.3s, color 0.3s;
+    width: 100%;
+}
+
+    .offcanvas .nav-link i[b-k7kaz3ictc] {
+        color: #0d47a1; /* Cor primária do Bootstrap no ícone */
+        font-size: 1.1rem;
+        margin-right: 15px; /* Mais espaço entre ícone e texto */
+        width: 20px;
+        text-align: center;
+    }
+
+    .offcanvas .nav-link:hover[b-k7kaz3ictc] {
+        background-color: #f1f1f1; /* Fundo cinza claro no hover */
+        color: #0d47a1 !important;
+        border-left-color: #ffae00; /* Cor de destaque (Amarelo/Laranja) na lateral esquerda */
+    }
+
+/* Busca Inferior */
+.offcanvas-body form.d-flex[b-k7kaz3ictc] {
+    padding: 1.5rem;
+    background-color: #f8f9fa; /* Fundo levemente cinza para a busca */
+    border-top: 1px solid #e9ecef;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.offcanvas-body .form-control[b-k7kaz3ictc] {
+    background-color: #fff;
+    border: 1px solid #ced4da;
+    color: #333;
+    text-align: center;
+    border-radius: 0.25rem; /* Remover se quiser borda completamente quadrada */
+}
+
+.offcanvas-body .btn-warning[b-k7kaz3ictc] {
+    background-color: #ffae00;
+    border: none;
+    color: #fff;
+    font-weight: 600;
+    width: 100%;
+    transition: background-color 0.2s;
+}
+
+    .offcanvas-body .btn-warning:hover[b-k7kaz3ictc] {
+        background-color: #e69d00;
+        color: #fff;
+    }
+
+/* --- Footer e Outros --- */
+.icon-link[b-k7kaz3ictc] {
+    color: #555;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-weight: 500;
+}
+
+    .icon-link:hover[b-k7kaz3ictc] {
+        color: #ffae00;
+    }
+
+#carouselBanner img[b-k7kaz3ictc] {
+    max-height: 390px;
+    object-fit: cover;
+    width: 100%;
+}
+
+#menuButton[b-k7kaz3ictc] {
+    z-index: 1040;
+}
+
+/* Estilos do Footer */
+.footer .hover-link:hover[b-k7kaz3ictc] {
+    color: var(--bs-primary) !important;
+    transition: color 0.3s;
+}
+
+.footer .social-links .btn[b-k7kaz3ictc] {
+    border-radius: 50%;
+    width: 38px;
+    height: 38px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-color: rgba(255, 255, 255, 0.25);
+    color: rgba(255, 255, 255, 0.75);
+}
+
+    .footer .social-links .btn:hover[b-k7kaz3ictc] {
+        background-color: var(--bs-primary);
+        color: #fff;
+        border-color: var(--bs-primary);
+    }

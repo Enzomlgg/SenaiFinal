@@ -1,0 +1,298 @@
+﻿@model BarraByTech.Models.ProdutoDetalheViewModel
+@using System.Text.Json
+@using Microsoft.AspNetCore.Html
+@using System.Security.Claims
+
+@{
+	ViewData["Title"] = "Detalhes do Produto: " + Model.Nome;
+
+	Guid produtoId = Model.ProdutoId;
+	Guid? itemFavoritoId = null;
+	bool isFavoritado = false;
+
+	if (ViewData["ItemFavoritoId"] is Guid favoritoId && favoritoId != Guid.Empty)
+	{
+		itemFavoritoId = favoritoId;
+		isFavoritado = true;
+	}
+
+	var formAction = isFavoritado ? "RemoverFavorito" : "AdicionarFavorito";
+	var buttonClass = isFavoritado ? "btn-outline-danger" : "btn-outline-secondary";
+	var iconClass = isFavoritado ? "bi-heart-fill" : "bi-heart";
+	var buttonTitle = isFavoritado ? "Remover dos Favoritos" : "Adicionar aos Favoritos";
+}
+
+<div class="container py-5">
+
+	<div class="row">
+
+		<div class="col-md-6 mb-4">
+			<div id="carouselProdutoDetalhe" class="carousel slide border border-2 border-secondary shadow-lg rounded-3" data-bs-ride="carousel">
+				<div class="carousel-inner rounded-3">
+					@for (int i = 0; i < Model.ImagensUrl.Count; i++)
+					{
+						<div class="carousel-item @(i == 0 ? "active" : "")">
+							<img src="@Url.Content(Model.ImagensUrl[i])" class="d-block w-100 p-3" alt="Imagem @(i+1)" style="max-height: 450px; object-fit: contain;">
+						</div>
+					}
+				</div>
+
+				@if (Model.ImagensUrl.Count > 1)
+				{
+					<button class="carousel-control-prev" type="button" data-bs-target="#carouselProdutoDetalhe" data-bs-slide="prev">
+						<span class="carousel-control-prev-icon bg-dark rounded-circle p-3" aria-hidden="true"></span>
+						<span class="visually-hidden">Anterior</span>
+					</button>
+					<button class="carousel-control-next" type="button" data-bs-target="#carouselProdutoDetalhe" data-bs-slide="next">
+						<span class="carousel-control-next-icon bg-dark rounded-circle p-3" aria-hidden="true"></span>
+						<span class="visually-hidden">Próximo</span>
+					</button>
+				}
+			</div>
+		</div>
+
+		<div class="col-md-6">
+
+			<div class="d-flex justify-content-between align-items-start">
+				<h1 class="fw-bolder mb-3 text-uppercase flex-grow-1 me-3">@Model.Nome</h1>
+
+				<form asp-controller="Cliente" asp-action="@formAction" method="post" class="mt-2">
+					@if (isFavoritado)
+					{
+						<input type="hidden" name="itemFavoritoId" value="@itemFavoritoId" />
+					}
+
+					@* Sempre envia o ProdutoId para garantir o redirecionamento correto na Action de remoção *@
+					<input type="hidden" name="produtoId" value="@Model.ProdutoId" />
+
+					<button type="submit" class="btn btn-lg @buttonClass shadow-sm" title="@buttonTitle" style="width: 50px; height: 50px;">
+						<i class="bi @iconClass fs-4"></i>
+					</button>
+				</form>
+			</div>
+
+			<p class="text-secondary small mb-4">
+				Marca: <strong class="text-dark">@Model.MarcaNome</strong> | Tipo: <strong class="text-dark">@Model.TipoMarcaNome</strong>
+			</p>
+
+			<hr class="text-muted">
+
+			<div class="mb-4">
+				<span id="valor-principal-titulo" class="badge bg-primary fs-6 mb-2 fw-semibold"></span>
+				<h2 id="valor-principal" class="fw-bolder text-danger display-5"></h2>
+			</div>
+
+			@if (Model.EstoqueAtual > 0 && Model.Precos.Any())
+			{
+				<div class="mb-3">
+					<button class="btn btn-link p-0 text-decoration-none fw-semibold text-primary" type="button" data-bs-toggle="collapse" data-bs-target="#opcoesPagamentoDetalhe" aria-expanded="false" aria-controls="opcoesPagamentoDetalhe">
+						<i class="bi bi-credit-card-2-front-fill me-1"></i> Ver todas as formas de pagamento
+					</button>
+				</div>
+
+				<div class="collapse border border-light p-3 rounded-3 bg-light" id="opcoesPagamentoDetalhe">
+					<h5 class="fw-bold mb-3 text-primary">Opções Disponíveis</h5>
+					<table class="table table-sm table-borderless table-responsive">
+						<tbody>
+							@{
+								var precosOrdenados = Model.Precos.OrderBy(p => p.Value);
+							}
+							@foreach (var preco in precosOrdenados)
+							{
+								<tr class="@(preco.Key.Contains("Pix") || preco.Key.Contains("À Vista") ? "table-success" : "")">
+									<td class="small">@preco.Key</td>
+									<td class="fw-bolder text-end">R$ @preco.Value.ToString("N2")</td>
+									<td class="text-end">
+										<button type="button"
+																		class="btn btn-sm btn-outline-dark btn-selecionar-preco"
+																		data-valor="@preco.Value.ToString("N2")"
+																		data-titulo="@preco.Key"
+																		data-raw-valor="@preco.Value.ToString("0.00", System.Globalization.CultureInfo.InvariantCulture)">
+											<i class="bi bi-check-circle-fill"></i> Selecionar
+										</button>
+									</td>
+								</tr>
+							}
+						</tbody>
+					</table>
+				</div>
+			}
+
+			<p class="mt-4 fs-5">
+				<strong class="text-dark">Estoque:</strong>
+				@if (Model.EstoqueAtual > 0)
+				{
+					<span class="text-success fw-bolder ms-2">
+						<i class="bi bi-box-seam-fill me-1"></i> @Model.EstoqueAtual un. em stock!
+					</span>
+				}
+				else
+				{
+					<span class="text-danger fw-bolder ms-2">
+						<i class="bi bi-x-octagon-fill me-1"></i> Esgotado
+					</span>
+				}
+			</p>
+
+			<hr class="text-muted">
+
+			@if (Model.EstoqueAtual > 0 && Model.Precos.Any())
+			{
+				<div class="d-flex align-items-center mb-3">
+
+					<form asp-controller="Cliente" asp-action="AdicionarAoCarrinho" method="post" class="d-flex w-100">
+
+						<input type="hidden" name="produtoId" value="@Model.ProdutoId" />
+
+						<label for="inputQuantidade" class="form-label mb-0 me-3 fw-bold text-dark">Quantidade:</label>
+
+						<input type="number"
+							   id="inputQuantidade"
+							   name="quantidade"
+							   class="form-control text-center me-3"
+							   value="1"
+							   min="1"
+							   max="@Model.EstoqueAtual"
+							   style="width: 100px;">
+
+						<button type="submit" class="btn btn-lg btn-danger flex-grow-1 fw-bold text-uppercase shadow-lg">
+							<i class="bi bi-cart-plus-fill me-2"></i> ADICIONAR AO CARRINHO
+						</button>
+					</form>
+				</div>
+				<small class="d-block text-center mt-2 text-secondary">
+					Preço selecionado e quantidade serão adicionados ao carrinho.
+				</small>
+			}
+			else
+			{
+				<button class="btn btn-lg btn-secondary w-100 mt-3 fw-bold text-uppercase" disabled>
+					<i class="bi bi-cart-x-fill me-2"></i> Indisponível
+				</button>
+			}
+
+		</div>
+	</div>
+
+	<div class="row mt-5">
+		<div class="col-12">
+			<h2 class="mb-3 border-bottom pb-2 fw-bold text-primary">Especificações e Descrição</h2>
+			<div class="bg-light p-4 rounded-3 shadow-sm">
+				<p style="white-space: pre-wrap;">@Model.Descricao</p>
+			</div>
+
+			<div class="d-flex justify-content-end mt-4">
+				<a href="javascript:history.back()" class="btn btn-outline-primary fw-semibold text-uppercase">
+					<i class="bi bi-arrow-left me-2"></i> Voltar à Lista
+				</a>
+			</div>
+		</div>
+	</div>
+
+</div>
+
+
+@section Scripts {
+	<script>
+		const precos = @Html.Raw(System.Text.Json.JsonSerializer.Serialize(Model.Precos));
+
+		const valorPrincipal = document.getElementById('valor-principal');
+		const valorPrincipalTitulo = document.getElementById('valor-principal-titulo');
+		const botoesPreco = document.querySelectorAll('.btn-selecionar-preco');
+		const inputQuantidade = document.getElementById('inputQuantidade');
+
+		let precoSelecionadoRaw = null;
+
+		function formatarBRL(valor) {
+			return valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL', minimumFractionDigits: 2 });
+		}
+
+		function atualizarValorPrincipal(valorRaw, titulo, buttonElement) {
+			const valorFormatado = formatarBRL(valorRaw);
+
+			precoSelecionadoRaw = valorRaw;
+
+			valorPrincipal.innerHTML = valorFormatado;
+			valorPrincipalTitulo.textContent = titulo;
+
+			botoesPreco.forEach(btn => btn.classList.replace('btn-dark', 'btn-outline-dark'));
+			if (buttonElement) {
+				buttonElement.classList.replace('btn-outline-dark', 'btn-dark');
+			}
+		}
+
+		function inicializarPreco() {
+			if (Object.keys(precos).length > 0) {
+
+				const menorValorRaw = Math.min(...Object.values(precos));
+				const chaveMenorValor = Object.keys(precos).find(key => precos[key] === menorValorRaw);
+
+				const primeiroBotao = document.querySelector(`[data-raw-valor="${menorValorRaw.toFixed(2)}"]`);
+
+				atualizarValorPrincipal(menorValorRaw, chaveMenorValor, primeiroBotao);
+
+			} else {
+				valorPrincipal.textContent = "Preço Indisponível";
+				valorPrincipalTitulo.textContent = "Produto indisponível para venda";
+				valorPrincipal.classList.remove('text-danger');
+				valorPrincipal.classList.add('text-secondary');
+			}
+		}
+
+		botoesPreco.forEach(button => {
+			button.addEventListener('click', function() {
+				const valorRaw = parseFloat(this.getAttribute('data-raw-valor'));
+				const titulo = this.getAttribute('data-titulo');
+
+				atualizarValorPrincipal(valorRaw, titulo, this);
+			});
+		});
+
+		const btnCarrinho = document.getElementById('btn-adicionar-carrinho');
+		if (btnCarrinho) {
+			btnCarrinho.addEventListener('click', function() {
+				const quantidade = parseInt(inputQuantidade.value);
+				const maxEstoque = parseInt(inputQuantidade.max);
+
+				if (precoSelecionadoRaw === null) {
+					alert('Por favor, selecione uma forma de pagamento para adicionar o produto.');
+					return;
+				}
+
+				if (quantidade < 1 || isNaN(quantidade)) {
+					alert('A quantidade deve ser de no mínimo 1 unidade.');
+					return;
+				}
+
+				if (quantidade > maxEstoque) {
+					alert(`A quantidade máxima disponível em estoque é de ${maxEstoque} unidades.`);
+					return;
+				}
+
+				console.log(`Produto ID: @Model.ProdutoId - Nome: @Model.Nome`);
+				console.log(`Quantidade: ${quantidade}`);
+				console.log(`Preço Unitário: R$${precoSelecionadoRaw.toFixed(2)}`);
+				console.log(`Valor Total: R$${(precoSelecionadoRaw * quantidade).toFixed(2)}`);
+
+				alert(`✅ ${quantidade}x ${Model.Nome} adicionado(s) ao carrinho! \nValor Unitário: ${formatarBRL(precoSelecionadoRaw)}`);
+
+			});
+		}
+
+		if (inputQuantidade) {
+			inputQuantidade.addEventListener('change', function() {
+				const max = parseInt(this.max);
+				const min = parseInt(this.min);
+				let value = parseInt(this.value);
+
+				if (value > max) {
+					this.value = max;
+				} else if (value < min || isNaN(value)) {
+					this.value = min;
+				}
+			});
+		}
+
+		window.onload = inicializarPreco;
+	</script>
+}

@@ -1,0 +1,17 @@
+﻿@model IEnumerable<BarraByTech.Models.ItemFavoritoViewModel>
+
+@if (Model == null || !Model.Any())
+{
+    <div class="alert alert-info" role="alert">
+        Você não tem nenhum item favorito ainda.
+    </div>
+}
+else
+{
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
+        @foreach (var item in Model)
+        {
+            @Html.Partial("_CardFavorito", item)
+        }
+    </div>
+}

@@ -1,0 +1,114 @@
+﻿@page "{id:guid}"
+@model BarraByTech.Areas.Identity.Pages.Account.Compras.DetailsModel
+@{
+    ViewData["Title"] = "Detalhes da Compra";
+}
+
+<link rel="stylesheet" href="~/css/compras.css" />
+
+<h2 class="mb-3 border-bottom pb-2">Detalhes da Compra</h2>
+
+<div class="card mb-4 shadow-sm">
+    <div class="card-body">
+        <h5 class="card-title fw-bold">Informações da Compra</h5>
+        <hr />
+        <div class="row">
+            <div class="col-md-6">
+                <p class="mb-1"><strong>Pedido ID:</strong> @Model.Compra.PedidoId</p>
+                <p class="mb-1"><strong>Método de Pagamento:</strong> @Model.Compra.Metodo</p>
+                <p class="mb-1"><strong>Valor Pago:</strong> @Model.Compra.ValorPago.ToString("C")</p>
+                <p class="mb-1"><strong>Data do Pagamento:</strong> @Model.Compra.DataPagamento.ToString("dd/MM/yyyy")</p>
+                <p class="mb-0">
+                    <strong>Status do Pagamento:</strong>
+                    <span class="badge @(Model.Compra.Status == BarraByTech.Models.Enums.StatusPagamento.Aprovado ? "bg-success" : "bg-warning text-dark")">
+                        @Model.Compra.Status
+                    </span>
+                </p>
+            </div>
+
+            <div class="col-md-6 border-start">
+                <h6 class="fw-bold mb-2">Endereço de Entrega:</h6>
+                @if (Model.EnderecoEntrega != null)
+                {
+                    @if (!string.IsNullOrEmpty(Model.EnderecoEntrega.Complemento))
+                    {
+                        <p class="mb-1 small text-muted">Complemento: @Model.EnderecoEntrega.Complemento</p>
+                    }
+                    <p class="mb-1">@Model.EnderecoEntrega.Cidade - @Model.EnderecoEntrega.Estado</p>
+                    <p class="mb-0">CEP: @Model.EnderecoEntrega.Cep</p>
+                }
+                else
+                {
+                    <p class="mb-0 text-danger">Endereço não encontrado ou removido.</p>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<h4 class="border-bottom pb-2">Itens da Compra</h4>
+
+@if (!Model.ItensDetalhes.Any())
+{
+    <div class="alert alert-info">Nenhum item encontrado nesta compra.</div>
+}
+else
+{
+    <div class="row row-cols-1 row-cols-md-2 g-4">
+        @foreach (var item in Model.ItensDetalhes)
+        {
+            <div class="col">
+                <div class="card h-100 shadow-sm">
+                    <div class="row g-0">
+
+                        <div class="col-4 d-flex justify-content-center align-items-center p-3 bg-light rounded-start">
+                            <img src="@item.ImagemUrl"
+                                 alt="@item.NomeProduto"
+                                 class="img-fluid rounded"
+                                 style="max-height: 100px; object-fit: contain;" />
+                        </div>
+
+                        <div class="col-8">
+                            <div class="card-body d-flex flex-column h-100 p-3">
+                                <h6 class="card-title fw-bold mb-1 text-truncate" title="@item.NomeProduto">
+                                    @item.NomeProduto
+                                </h6>
+
+                                <div class="mt-auto pt-2 border-top">
+                                    <p class="mb-0 small text-muted">Quantidade Comprada:</p>
+                                    <h4 class="fw-bolder text-primary mb-2">@item.Quantidade</h4>
+                                </div>
+
+                                <table class="table table-sm table-borderless small mb-0">
+                                    <tbody>
+                                        <tr>
+                                            <td class="fw-bold p-0">Valor Unitário:</td>
+                                            <td class="text-end p-0">@item.ValorUnitario.ToString("C")</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="fw-bold p-0">Total do Item:</td>
+                                            <td class="text-end p-0">
+                                                <span class="fw-bolder text-success">@item.Total.ToString("C")</span>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+    <div class="card bg-light shadow-sm mt-4 p-3">
+        <div class="d-flex justify-content-end align-items-center">
+            <h5 class="fw-bold mb-0 me-3">Total Geral da Compra:</h5>
+            <h3 class="fw-bolder text-dark mb-0">
+                @Model.ItensDetalhes.Sum(i => i.Total).ToString("C")
+            </h3>
+        </div>
+    </div>
+}
+
+<a asp-page="Index" class="btn btn-secondary mt-4">Voltar para Minhas Compras</a>

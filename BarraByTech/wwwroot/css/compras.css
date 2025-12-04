@@ -1,0 +1,41 @@
+﻿h2, h4 {
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 5px;
+    margin-top: 20px;
+}
+
+.card-body p {
+    margin-bottom: 0.5rem;
+}
+
+.card-body strong {
+    color: #343a40;
+}
+
+.item-compra-card {
+    transition: transform 0.2s ease-in-out;
+}
+
+    .item-compra-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+    }
+
+    .item-compra-card img {
+        border: 1px solid #dee2e6;
+        padding: 5px;
+        background-color: #fff;
+    }
+
+    .item-compra-card .card-title {
+        color: #007bff;
+    }
+
+    .item-compra-card table {
+        width: 100%;
+        margin-top: 10px;
+    }
+
+        .item-compra-card table td {
+            padding: 0.2rem 0 !important;
+        }

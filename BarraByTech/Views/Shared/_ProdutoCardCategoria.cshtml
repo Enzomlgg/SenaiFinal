@@ -1,0 +1,163 @@
+﻿@model ProdutoDTO
+@using System.IO
+@using BarraByTech.Models.DTO
+@inject IWebHostEnvironment Env
+
+@{
+    var pastaVirtual = $"/Imagens/Produtos/{Model.ProdutoId}/";
+    string pastaFisica = System.IO.Path.Combine(Env.WebRootPath, "Imagens", "Produtos", Model.ProdutoId.ToString());
+    string imagemUrl = "/img/placeholder.png";
+
+    if (Directory.Exists(pastaFisica))
+    {
+        string basePng = System.IO.Path.Combine(pastaFisica, "Base.png");
+        if (File.Exists(basePng))
+        {
+            imagemUrl = pastaVirtual + "Base.png";
+        }
+        else
+        {
+            string[] extensoes = { "png", "jpg", "jpeg", "webp" };
+            foreach (var ext in extensoes)
+            {
+                var arquivos = Directory.GetFiles(pastaFisica, $"*.{ext}");
+                if (arquivos.Length > 0)
+                {
+                    imagemUrl = pastaVirtual + System.IO.Path.GetFileName(arquivos[0]);
+                    break;
+                }
+            }
+        }
+    }
+
+    decimal menorValor = 0;
+    bool disponivelParaVenda = false;
+    string formaPagamento = "Consulte-nos";
+    bool estaEmPromocao = Model.Promocao > 0 && Model.Promocao < Model.Vista;
+
+    var precosValidos = new[] {
+        new { Preco = Model.Promocao, Forma = "Promoção (PIX/Boleto)" },
+        new { Preco = Model.Vista, Forma = "à vista no PIX" },
+        new { Preco = Model.Boleto, Forma = "no Boleto" },
+        new { Preco = Model.Cartao, Forma = "no Cartão" }
+    }
+    .Where(x => x.Preco > 0)
+    .OrderBy(x => x.Preco)
+    .ToList();
+
+    if (precosValidos.Any())
+    {
+        var melhorPreco = precosValidos.First();
+        menorValor = melhorPreco.Preco;
+        formaPagamento = melhorPreco.Forma;
+        disponivelParaVenda = true;
+    }
+
+    // ✨ Novo Bloco de Verificação de Favorito usando ViewBag/ViewData
+    Guid? itemFavoritoId = null;
+    bool isFavoritado = false;
+
+    // Tenta obter o ItemFavoritoId do dicionário passado pelo Controller via ViewBag
+    var favoritosMap = (Dictionary<Guid, Guid>)ViewBag.ProdutosFavoritadosMap;
+    if (favoritosMap != null && favoritosMap.TryGetValue(Model.ProdutoId, out Guid idDoFavorito))
+    {
+        itemFavoritoId = idDoFavorito;
+        isFavoritado = idDoFavorito != Guid.Empty;
+    }
+
+    var formAction = isFavoritado ? "RemoverFavorito" : "AdicionarFavorito";
+    var buttonClass = isFavoritado ? "btn-danger" : "btn-outline-danger";
+    var iconClass = isFavoritado ? "bi-heart-fill" : "bi-heart";
+    var buttonTitle = isFavoritado ? "Remover dos Favoritos" : "Adicionar aos Favoritos";
+}
+
+<div class="col">
+    <div class="card h-100 shadow-sm border @(estaEmPromocao ? "border-danger" : "")">
+        <div class="card-body p-0 d-flex flex-column">
+
+            @if (estaEmPromocao)
+            {
+                <span class="badge bg-danger position-absolute top-0 end-0 m-2 rounded-pill shadow-sm">OFERTA</span>
+            }
+
+            <div class="d-flex justify-content-center align-items-center p-3" style="min-height: 200px; max-height: 200px; overflow: hidden;">
+                <img src="@Url.Content(imagemUrl)"
+                     alt="@Model.Nome"
+                     class="img-fluid"
+                     style="object-fit: contain; max-height: 100%; max-width: 100%;" />
+            </div>
+
+            <div class="p-3 d-flex flex-column flex-grow-1">
+
+                <h5 class="card-title fw-bold text-dark mb-0" style="font-size: 1.15rem; min-height: 2.5rem; overflow: hidden;">
+                    @Model.Nome
+                </h5>
+
+                <div style="font-size: 0.8rem; margin-bottom: 0.5rem;">
+                    @if (Model.EstoqueAtual > 0)
+                    {
+                        <span class="text-success fw-bold"><i class="bi bi-check-circle-fill"></i> Em Estoque (@Model.EstoqueAtual un.)</span>
+                    }
+                    else
+                    {
+                        <span class="text-danger fw-bold"><i class="bi bi-x-circle-fill"></i> Esgotado</span>
+                    }
+                </div>
+
+                <p class="card-text text-muted flex-grow-1 mt-2" style="font-size: 0.8rem; min-height: 2.4rem; overflow: hidden;">
+                    @(Model.Descricao?.Length > 60
+                        ? Model.Descricao.Substring(0, 60) + "..."
+                        : Model.Descricao)
+                </p>
+
+                <div class="mt-2 pt-2 border-top">
+                    @if (disponivelParaVenda)
+                    {
+                        @if (estaEmPromocao)
+                        {
+                            <div class="text-muted text-decoration-line-through small">
+                                R$ @Model.Vista.ToString("N2")
+                            </div>
+                        }
+                        <div class="fw-bolder @(estaEmPromocao ? "text-danger" : "text-primary")" style="font-size: 1.5rem;">
+                            R$ @menorValor.ToString("N2")
+                        </div>
+                        <div class="@(estaEmPromocao ? "text-danger" : "text-muted")" style="font-size: 0.85rem;">
+                            @formaPagamento
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="fw-bolder text-secondary" style="font-size: 1.5rem;">
+                            Preço Sob Consulta
+                        </div>
+                        <div class="text-muted" style="font-size: 0.85rem;">
+                            Produto indisponível
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+
+        <div class="card-footer bg-white border-0 p-3 d-flex justify-content-between">
+
+            <form class="d-inline flex-grow-1 me-2" asp-controller="Cliente" asp-action="@formAction" method="post">
+                @if (isFavoritado)
+                {
+                    <input type="hidden" name="itemFavoritoId" value="@itemFavoritoId" />
+                }
+                else
+                {
+                    <input type="hidden" name="produtoId" value="@Model.ProdutoId" />
+                }
+                <button type="submit" class="btn @buttonClass w-100 fw-bold shadow-sm" title="@buttonTitle">
+                    <i class="bi @iconClass"></i>
+                </button>
+            </form>
+
+            <a href="@Url.Action("DetalheProduto", "Produto", new { id = Model.ProdutoId })" class="btn btn-warning fw-bold shadow-sm flex-grow-1">
+                <i class="bi bi-eye"></i> Visualizar
+            </a>
+        </div>
+    </div>
+</div>

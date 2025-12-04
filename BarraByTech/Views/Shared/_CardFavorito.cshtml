@@ -1,0 +1,100 @@
+﻿@model BarraByTech.Models.ItemFavoritoViewModel
+@using System.Globalization
+@inject IWebHostEnvironment Env
+
+@{
+    CultureInfo cultura = new CultureInfo("pt-BR");
+
+    var pastaVirtual = $"/Imagens/Produtos/{Model.ProdutoId}/";
+    string imagemUrl = Model.ImagemUrl;
+
+    decimal menorValor = 0;
+    bool disponivelParaVenda = Model.Vista > 0 || Model.Promocao > 0;
+    string formaPagamento = "à vista";
+    bool estaEmPromocao = Model.Promocao > 0 && Model.Promocao < Model.Vista;
+
+    if (Model.Promocao > 0)
+    {
+        menorValor = Model.Promocao;
+        formaPagamento = "Promoção (PIX/Boleto)";
+    }
+    else if (Model.Vista > 0)
+    {
+        menorValor = Model.Vista;
+        formaPagamento = "à vista no PIX";
+    }
+}
+
+<div class="col">
+    <div class="card h-100 shadow-sm border @(estaEmPromocao ? "border-danger" : "")">
+        <div class="card-body p-0 d-flex flex-column">
+
+            <div class="position-absolute top-0 end-0 m-2">
+                <form asp-controller="Cliente" asp-action="RemoverFavorito" method="post" style="display:inline;">
+                    <input type="hidden" name="itemFavoritoId" value="@Model.ItemFavoritoId" />
+                    <button type="submit" class="btn btn-danger btn-sm rounded-pill shadow-sm" title="Remover dos Favoritos">
+                        <i class="bi bi-heart-fill"></i> Remover
+                    </button>
+                </form>
+            </div>
+
+            @if (estaEmPromocao)
+            {
+                <span class="badge bg-danger position-absolute top-0 start-0 m-2 rounded-pill shadow-sm">OFERTA</span>
+            }
+
+            <div class="d-flex justify-content-center align-items-center p-3" style="min-height: 200px; max-height: 200px; overflow: hidden;">
+                <img src="@Url.Content(imagemUrl)"
+                     alt="@Model.NomeProduto"
+                     class="img-fluid"
+                     style="object-fit: contain; max-height: 100%; max-width: 100%;" />
+            </div>
+
+            <div class="p-3 d-flex flex-column flex-grow-1">
+
+                <h5 class="card-title fw-bold text-dark mb-0" style="font-size: 1.15rem; min-height: 2.5rem; overflow: hidden;">
+                    @Model.NomeProduto
+                </h5>
+
+                <p class="card-text text-muted flex-grow-1 mt-2" style="font-size: 0.8rem; min-height: 2.4rem; overflow: hidden;">
+                    @(Model.DescricaoProduto?.Length > 60
+                        ? Model.DescricaoProduto.Substring(0, 60) + "..."
+                        : Model.DescricaoProduto)
+                </p>
+
+                <div class="mt-2 pt-2 border-top">
+                    @if (disponivelParaVenda)
+                    {
+                        if (estaEmPromocao)
+                        {
+                            <div class="text-muted text-decoration-line-through small">
+                                R$ @Model.Vista.ToString("N2", cultura)
+                            </div>
+                        }
+                        <div class="fw-bolder @(estaEmPromocao ? "text-danger" : "text-primary")" style="font-size: 1.5rem;">
+                            R$ @menorValor.ToString("N2", cultura)
+                        </div>
+                        <div class="@(estaEmPromocao ? "text-danger" : "text-muted")" style="font-size: 0.85rem;">
+                            @formaPagamento
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="fw-bolder text-secondary" style="font-size: 1.5rem;">
+                            Preço Sob Consulta
+                        </div>
+                        <div class="text-muted" style="font-size: 0.85rem;">
+                            Produto indisponível
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+
+        <div class="card-footer bg-white border-0 p-3 d-flex justify-content-center">
+            <a href="@Url.Action("DetalheProduto", "Produto", new { id = Model.ProdutoId })" class="btn btn-warning fw-bold shadow-sm flex-grow-1">
+                <i class="bi bi-eye"></i> Visualizar Detalhes
+            </a>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,82 @@
+﻿@model ProdutoDTO
+@using System.IO
+@using BarraByTech.Models.DTO
+@inject IWebHostEnvironment Env
+
+@{
+    var pastaVirtual = $"/Imagens/Produtos/{Model.ProdutoId}/";
+    string pastaFisica = System.IO.Path.Combine(Env.WebRootPath, "Imagens", "Produtos", Model.ProdutoId.ToString());
+    string imagemUrl = "/img/placeholder.png";
+
+    if (Directory.Exists(pastaFisica))
+    {
+        string basePng = System.IO.Path.Combine(pastaFisica, "Base.png");
+        if (File.Exists(basePng))
+        {
+            imagemUrl = pastaVirtual + "Base.png";
+        }
+        else
+        {
+            string[] extensoes = { "png", "jpg", "jpeg", "webp" };
+            foreach (var ext in extensoes)
+            {
+                var arquivos = Directory.GetFiles(pastaFisica, $"*.{ext}");
+                if (arquivos.Length > 0)
+                {
+                    imagemUrl = pastaVirtual + System.IO.Path.GetFileName(arquivos[0]);
+                    break;
+                }
+            }
+        }
+    }
+}
+
+<div class="scroll-card-wrapper">
+    <div class="card h-100 shadow-sm card-promo">
+        <div class="card-body p-0 d-flex flex-column">
+            <div class="d-flex justify-content-center align-items-center p-3 bg-light" style="min-height: 180px; max-height: 180px; overflow: hidden;">
+                <img src="@Url.Content(imagemUrl)"
+                     alt="@Model.Nome"
+                     class="img-fluid"
+                     style="object-fit: contain; max-height: 100%; max-width: 100%;" />
+            </div>
+
+            <div class="p-3 d-flex flex-column flex-grow-1">
+                <span class="badge bg-danger mb-2 position-absolute top-0 end-0 m-2 rounded-pill shadow">OFERTA</span>
+
+                <h5 class="card-title fw-bolder text-dark mb-1" style="font-size: 1.1rem; min-height: 2.2rem; overflow: hidden;">
+                    @Model.Nome
+                </h5>
+
+                <div style="font-size: 0.8rem; margin-bottom: 0.5rem;">
+                    @if (Model.EstoqueAtual > 0)
+                    {
+                        <span class="text-success fw-bold"><i class="bi bi-check-circle-fill"></i> Em Estoque</span>
+                    }
+                    else
+                    {
+                        <span class="text-danger fw-bold"><i class="bi bi-x-circle-fill"></i> Esgotado</span>
+                    }
+                </div>
+
+                <div class="mt-2 pt-2 border-top">
+                    <div class="text-muted text-decoration-line-through small">
+                        De R$ @Model.Vista.ToString("N2")
+                    </div>
+                    <div class="fw-bolder text-danger display-6">
+                        R$ @Model.Promocao.ToString("N2")
+                    </div>
+                    <div class="text-danger small">
+                        no PIX ou Boleto
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-footer bg-white border-0 p-3">
+            <a href="@Url.Action("DetalheProduto", "Produto", new { id = Model.ProdutoId })" class="btn btn-danger w-100 fw-bold shadow-sm">
+                <i class="bi bi-cart-fill"></i> COMPRAR
+            </a>
+        </div>
+    </div>
+</div>
