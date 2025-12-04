@@ -1,0 +1,45 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\SENAI3EM\\Desktop\\BarraByTechAPI\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A1055852-22A7-46B8-B792-DB6D7E5D4089}|BarraByTechAPI\\BarraByTechAPI.csproj|c:\\users\\senai3em\\desktop\\barrabytechapi\\barrabytechapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{A1055852-22A7-46B8-B792-DB6D7E5D4089}|BarraByTechAPI\\BarraByTechAPI.csproj|solutionrelative:barrabytechapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{e1b7d1f8-9b3c-49b1-8f4f-bfc63a88835d}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\SENAI3EM\\Desktop\\BarraByTechAPI\\BarraByTechAPI\\appsettings.json",
+              "RelativeDocumentMoniker": "BarraByTechAPI\\appsettings.json",
+              "ToolTip": "C:\\Users\\SENAI3EM\\Desktop\\BarraByTechAPI\\BarraByTechAPI\\appsettings.json",
+              "RelativeToolTip": "BarraByTechAPI\\appsettings.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAhAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-12-04T10:16:35.605Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
